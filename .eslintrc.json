@@ -2,9 +2,11 @@
     "extends": [
         "airbnb",
         "prettier",
-        "plugin:react/recommended",
-        "plugin:node/recommended"
+        "plugin:react/recommended"
     ],
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "plugins": [
         "prettier",
         "react"
@@ -12,6 +14,7 @@
     "rules": {
         "no-underscore-dangle":"off",
         "no-unused-vars":"warn",
-        "no-console":"off"
+        "no-console":"off",
+        "react/jsx-filename-extension":[1,{"extensions":[".js",".jsx"]}]
     }
 }
