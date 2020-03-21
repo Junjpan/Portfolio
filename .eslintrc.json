@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "airbnb",
+        "prettier",
+        "plugin:react/recommended",
+        "plugin:node/recommended"
+    ],
+    "plugins": [
+        "prettier",
+        "react"
+    ],
+    "rules": {
+        "no-underscore-dangle":"off",
+        "no-unused-vars":"warn",
+        "no-console":"off"
+    }
+}
