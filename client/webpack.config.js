@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: { main: './src/index.js' },
@@ -12,6 +14,10 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html', // the filename value is the name of the minified HTML that will be generated in the dist folder
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+    }),
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [
@@ -34,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
