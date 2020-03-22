@@ -2,5 +2,16 @@
   color: white;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
+  margin: 50px auto 10px;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.profile_image {
+  border: 5px solid rgb(8, 74, 135);
+  box-shadow: 2px 3px 3px 3px black;
+}
+
+h1 {
+  font-size: 3rem;
 }
