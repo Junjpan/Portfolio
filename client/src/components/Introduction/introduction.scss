@@ -1,0 +1,28 @@
+@import '../../_global';
+
+.introduction_framework {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto;
+  padding: 10px;
+  @media screen and (max-width: 320px) {
+    width: 100%;
+    padding: 0px;
+  }
+}
+
+.intro_title {
+  background-color: black;
+  color: $assentColor;
+  height: 40px;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.intro_body {
+  font-size: 1.5rem;
+  white-space: wrap;
+  padding: 1rem;
+  color: black;
+}

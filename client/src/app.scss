@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
-@import url('./components/Profile/profile.scss');
-@import url('./components/Logo/logo.scss');
+@import './_global.scss';
+@import './components/Profile/profile.scss';
+@import './components/Logo/logo.scss';
+@import './components/Introduction/introduction.scss';
 
 html {
   font-size: 10px;
@@ -13,7 +15,7 @@ body {
 .Appcontainer {
   position: absolute;
   width: 100%;
-  background: black;
+  background: $assentColor;
   top: 35px;
   left: 0px;
   height: 200px;
