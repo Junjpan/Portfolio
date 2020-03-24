@@ -1,0 +1,22 @@
+.profile {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px auto 10px;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.profile_image {
+  border: 5px solid white;
+  box-shadow: 2px 3px 3px 3px black;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(8, 74, 135);
+}

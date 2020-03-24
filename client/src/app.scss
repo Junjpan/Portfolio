@@ -1,3 +1,22 @@
-body{
-    background:gray;
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+@import './_global.scss';
+@import './components/Profile/profile.scss';
+@import './components/Logo/logo.scss';
+@import './components/Introduction/introduction.scss';
+
+html {
+  font-size: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+body {
+  background: gray;
+}
+
+.Appcontainer {
+  position: absolute;
+  width: 100%;
+  background: $assentColor;
+  top: 35px;
+  left: 0px;
+  height: 200px;
 }

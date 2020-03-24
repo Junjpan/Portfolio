@@ -1,0 +1,11 @@
+@import '../../_global';
+
+.logo {
+  display: flex;
+  margin: -35px auto auto 30px;
+  width: 130px;
+}
+
+.logoFrame {
+  border: 5px double $assentColor;
+}
