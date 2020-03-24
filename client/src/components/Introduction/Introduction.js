@@ -22,7 +22,7 @@ function Introduction() {
             "I'm a detail-oriented, diligent and intellectually curious person. I'm a great team player and always lend a careful ear to work in a constructive way with my team.  As a consummate learner I’m always eager to learn new technologies and push the edge technically.",
         },
       ]);
-    }, 1500);
+    }, 2000);
   }, []);
 
   useEffect(() => {
@@ -36,14 +36,14 @@ function Introduction() {
             'MongodDB/mongoose,Express.JS,React.JS,Node.JS (MERN STACK),JavaScript,ES5/ES6,HTML5,CSS/SCSS,Boostrap,JSON,Jquery,webpack,D3,restful API,PUG, Git/Github ...',
         },
       ]);
-    }, 3500);
+    }, 4500);
   }, []);
 
   function Animated(items) {
     const transitions = useTransition(items, item => item.key, {
       from: { transform: 'translate3d(-1000px,0,0)', height: '0px', opacity: 0 },
       enter: { transform: 'translate3d(0px,0,0)', height: '200px', opacity: 1 },
-      config: { duration: 1500 },
+      config: { duration: 2000 },
     });
 
     return transitions.map(({ item, key, props }) => {
