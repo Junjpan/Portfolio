@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState, useEffect } from 'react';
 import { Spring } from 'react-spring/renderprops';
 import { useTransition, animated } from 'react-spring';
