@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TersePlugin = require('terser-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: { main: './src/index.js' },
@@ -13,10 +16,14 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
   }, // have to include these lines of code to be able to use react-router-dom.
+  optimization: {
+    minimizer: [new OptimizeCssAssetsPlugin(), new TersePlugin(), new UglifyJsPlugin()],
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: 'index.html', // the filename value is the name of the minified HTML that will be generated in the dist folder
+      favicon: './src/assets/logo.png', // add the icon to the website tag
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
