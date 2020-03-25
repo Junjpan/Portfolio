@@ -9,7 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
   entry: { main: './src/index.js' },
   output: {
-    filename: '[name].[contentHash].js',
+    filename: '[name].[contentHash].bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
   devtool: 'cheap-module-eval-source-map',
@@ -17,6 +17,16 @@ module.exports = {
     historyApiFallback: true,
   }, // have to include these lines of code to be able to use react-router-dom.
   optimization: {
+    splitChunks: {
+      cacheGroups: {
+        react: { test: /[\\/]node_modules[\\/]((react).*)[\\/]/, name: 'react', chunks: 'all' },
+        commons: {
+          test: /[\\/]node_modules[\\/]((?!react).*)[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    }, // have all the independences inside the vendor bundles
     minimizer: [new OptimizeCssAssetsPlugin(), new TersePlugin(), new UglifyJsPlugin()],
   },
   plugins: [
