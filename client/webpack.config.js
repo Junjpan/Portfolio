@@ -9,6 +9,10 @@ module.exports = {
     filename: '[name].[contentHash].js',
     path: path.resolve(__dirname, 'build'),
   },
+  devtool: 'cheap-module-eval-source-map',
+  devServer: {
+    historyApiFallback: true,
+  }, // have to include these lines of code to be able to use react-router-dom.
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',

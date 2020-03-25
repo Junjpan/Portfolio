@@ -33,7 +33,7 @@ function Introduction() {
           key: 3,
           title: 'My Technical Background:',
           text:
-            'MongodDB/mongoose,Express.JS,React.JS,Node.JS (MERN STACK),JavaScript,ES5/ES6,HTML5,CSS/SCSS,Boostrap,JSON,Jquery,webpack,D3,restful API,PUG, Git/Github ...',
+            'MongodDB/mongoose,Express.JS,React.JS,Node.JS (MERN STACK),JavaScript,ES5/ES6,HTML5,CSS/SCSS,Boostrap,JSON,Jquery, webpack,D3,restful API,PUG, Git/Github ...',
         },
       ]);
     }, 4500);
