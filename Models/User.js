@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
+// this method will require you to do the async and await in the routes
 UserSchema.statics.hashPassword = password => {
   return bcrypt.hash(password, 10);
 };
