@@ -4,6 +4,9 @@
   display: flex;
   margin: -35px auto auto 30px;
   width: 130px;
+  @media screen and (max-width: 480px) {
+    margin: -35px 0px 0px 0px;
+  }
 }
 
 .logoFrame {
