@@ -5,7 +5,7 @@ function Introduction() {
   const [introArray, setIntroductionArray] = useState([
     {
       key: 1,
-      title: 'Who I Am?',
+      title: 'Who I Am',
       text:
         "My name is Jun, I'm a frontend/full stack developer. I have nearly 3 years of web development experience. I love coding and making dynamic applications and products. In my spare time I love photography and spending my time with my family. I also speak three languages.",
     },
@@ -31,7 +31,7 @@ function Introduction() {
         ...introArray,
         {
           key: 3,
-          title: 'My Technical Background:',
+          title: 'My Technical Background',
           text:
             'MongodDB/mongoose,Express.JS,React.JS,Node.JS (MERN STACK),JavaScript,ES5/ES6,HTML5,CSS/SCSS,Boostrap,JSON,Jquery, webpack,D3,restful API,PUG, Git/Github ...',
         },
