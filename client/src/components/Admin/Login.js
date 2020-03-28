@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Message from '../Message/Message';
 
-function Login({ setRegister }) {
+function Login({ setRegister, setLogin }) {
   const [username, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -15,15 +15,14 @@ function Login({ setRegister }) {
   const submitLogin = e => {
     e.preventDefault();
     const userinfo = { username, password };
-    console.log(userinfo);
     axios
       .post('/api/user/login', userinfo)
       .then(res => {
-        console.log(res);
-        setMessage(res.data.message);
+        // eslint-disable-next-line no-undef
+        localStorage.setItem('token', res.data.token);
+        setLogin(true);
       })
       .catch(err => {
-        console.log(err);
         setMessage(err.response.data.message);
       });
   };
@@ -75,10 +74,12 @@ function Login({ setRegister }) {
 
 Login.defaultProps = {
   setRegister: false,
+  setLogin: false,
 };
 
 Login.propTypes = {
   setRegister: PropTypes.func,
+  setLogin: PropTypes.func,
 };
 
 export default Login;

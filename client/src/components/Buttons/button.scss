@@ -57,3 +57,20 @@
     transform: rotate(360deg);
   }
 }
+
+.generalBTN {
+  width: 200px;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  height: 35px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid lightgray;
+
+  &:hover {
+    cursor: pointer;
+    border-color: black;
+    color: black;
+  }
+}
