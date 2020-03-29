@@ -26,22 +26,3 @@ body {
   left: 0px;
   height: 200px;
 }
-
-.Appcontainer {
-  animation: change 20s 10s infinite; /*delay in 10s*/
-}
-
-@keyframes change {
-  0% {
-    background-image: linear-gradient(180deg, transparent 0%, rgb(107, 172, 232));
-  }
-  25% {
-    background-image: linear-gradient(180deg, transparent 30%, rgb(107, 172, 232));
-  }
-  50% {
-    background-image: linear-gradient(180deg, transparent 60%, rgb(107, 172, 232));
-  }
-  100% {
-    background-image: linear-gradient(180deg, transparent 100%, rgb(107, 172, 232));
-  }
-}
