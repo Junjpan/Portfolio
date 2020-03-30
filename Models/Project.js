@@ -10,4 +10,4 @@ const ProjectSchema = new mongoose.Schema({
   smallscreen: Buffer,
 });
 
-module.exports = conn.model('Projects', ProjectSchema);
+module.exports = conn.model('Project', ProjectSchema);
