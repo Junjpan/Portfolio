@@ -6,6 +6,7 @@
 @import './components/Buttons/button.scss';
 @import './components/Projects/Projects.scss';
 @import './components/Admin/admin.scss';
+@import './components/Editproject/Editproject.scss';
 
 html {
   font-size: 10px;
@@ -16,7 +17,8 @@ body {
 }
 
 .Appcontainer,
-.formcontainer {
+.formcontainer,
+.Editcontainer {
   position: absolute;
   width: 100%;
   background: $assentColor;

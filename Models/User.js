@@ -7,11 +7,14 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
+// this method will require you to do the async and await in the routes
 UserSchema.statics.hashPassword = password => {
   return bcrypt.hash(password, 10);
 };
 
-UserSchema.methods.comparePassword = password => {
+// if you use 'this' here, make sure don't use arrow function
+// eslint-disable-next-line func-names
+UserSchema.methods.comparePassword = function(password) {
   return bcrypt.compare(password, this.password);
 };
 

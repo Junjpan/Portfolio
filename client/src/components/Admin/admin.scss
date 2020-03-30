@@ -1,7 +1,7 @@
 @import '../../_global';
 
 .admin_form {
-  margin: 90px auto auto auto;
+  margin: 80px auto auto auto;
   width: 300px;
   height: 400px;
   border: 1px solid white;
@@ -19,6 +19,12 @@ label {
   width: 100%;
   font-size: 2rem;
   height: 2.5rem;
+}
+
+textarea {
+  margin: 10px auto;
+  width: 100%;
+  font-size: 2rem;
 }
 
 .inner_form {
