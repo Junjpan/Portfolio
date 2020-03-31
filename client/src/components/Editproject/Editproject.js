@@ -32,6 +32,7 @@ function Editproject({ setLogin }) {
     e.preventDefault();
     // receive all the basic information from the file ( name, lastModified, webkitRelativePath,size,type,)
     const file = e.target.files[0];
+    setFullScreen(file);
 
     reader.readAsDataURL(file); // readAsDataUrl->image readAsText->documents
 
@@ -53,20 +54,22 @@ function Editproject({ setLogin }) {
 
   const addProject = e => {
     e.preventDefault();
-    const projectInfo = {
-      projectName,
-      technologies,
-      description,
-      demoLink,
-      githubLink,
-      fullscreen,
-      smallscreen,
-    };
+
+    let formData = new FormData();
+    formData.append('bigimage', fullscreen);
+    formData.append('projectName', projectName);
+    formData.append('technologies', technologies);
+    formData.append('description', description);
+    formData.append('demoLink', demoLink);
+    formData.append('githubLink', githubLink);
 
     axios
-      .post('/api/projects/add', projectInfo, {
+      .post('/api/projects/add', formData, {
         // eslint-disable-next-line no-undef
-        headers: { authentication: `Bearer ${localStorage.token}` }, // using the Bearer schema
+        headers: {
+          'Content-Type': `multipart/form-data`,
+          authentication: `Bearer ${localStorage.token}`,
+        }, // using the Bearer schema
       })
       .then(res => {
         console.log(res.data);
