@@ -34,9 +34,7 @@ function Editproject({ setLogin }) {
     const file = e.target.files[0];
     setFullScreen(file);
 
-    reader.readAsDataURL(file); // readAsDataUrl->image readAsText->documents
-
-    // set preview image
+    reader.readAsDataURL(file); // set preview image. readAsDataUrl->image readAsText->documents
     reader.onloadend = () => {
       // reader.result is image's base64
       setPreviewURL(reader.result);
@@ -46,6 +44,7 @@ function Editproject({ setLogin }) {
   const uploadMobileImage = e => {
     e.preventDefault();
     const file = e.target.files[0];
+    setSmallScreen(file);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSmallURL(reader.result);
@@ -56,7 +55,8 @@ function Editproject({ setLogin }) {
     e.preventDefault();
 
     let formData = new FormData();
-    formData.append('bigimage', fullscreen);
+    formData.append('projectimages', fullscreen);
+    formData.append('projectimages', smallscreen);
     formData.append('projectName', projectName);
     formData.append('technologies', technologies);
     formData.append('description', description);
