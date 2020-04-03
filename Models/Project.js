@@ -7,8 +7,8 @@ const ProjectSchema = new mongoose.Schema({
   description: String,
   demoLink: String,
   githubLink: String,
-  fullscreenfilename: String,
-  smallscreenfilename: String,
+  fullscreenlink: String,
+  smallscreenlink: String,
 });
 
 module.exports = conn.model('Project', ProjectSchema);

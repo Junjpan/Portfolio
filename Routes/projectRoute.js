@@ -1,11 +1,65 @@
 const Router = require('express').Router();
 const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const mongoose = require('mongoose');
-const GridFsStream = require('gridfs-stream');
+const cloudinary = require('cloudinary').v2;
+
+const upload = multer({ dest: './uploads/' }); // set the upload files location without storage enginee
+const verifyToken = require('./verifyToken');
+const Project = require('../Models/Project');
+
+require('dotenv').config();
+
+cloudinary.config({
+  cloud_name: 'dksmtex8g',
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+Router.post('/add', verifyToken, upload.array('projectimages', 2), async (req, res) => {
+  // multer set req.file -single file upload ;req.files->multi files upload, name inside the upload.array() need to match up the frontend fieldname
+  // console.log(req.files); there is a path for each uploaded fiile, you have to pass the path to cloudinar.uploader to get the result.
+
+  function retrieveURL(filepath) {
+    return new Promise((resolve, reject) => {
+      cloudinary.uploader.upload(filepath, (err, result) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(result.url);
+      });
+    });
+  }
+
+  const { projectName, technologies, description, demoLink, githubLink } = req.body;
+  const fullscreenlink = req.files[0] ? await retrieveURL(req.files[0].path) : '';
+  const smallscreenlink = req.files[1] ? await retrieveURL(req.files[1].path) : '';
+
+  Project.create(
+    {
+      projectName,
+      technologies,
+      description,
+      demoLink,
+      githubLink,
+      fullscreenlink,
+      smallscreenlink,
+    },
+    (err, newProject) => {
+      res.status(200).json({
+        fullscreenlink: newProject.fullscreenlink,
+        smallscreenlink: newProject.smallscreenlink,
+        message: 'You App has been uploaded.',
+      });
+    },
+  );
+});
+
+module.exports = Router;
+
+/** This is when you decide to upload the image to the mongoDB.
+
 const crypto = require('crypto');
 const path = require('path');
-
+const GridFsStorage = require('multer-gridfs-storage');
 const URL = process.env.DBA_URL;
 const storage = new GridFsStorage({
   url: URL,
@@ -28,63 +82,6 @@ const storage = new GridFsStorage({
   },
 });
 
-const upload = multer({ storage }); // storage the images to the mongodb
-// const upload = multer({dest: './uploads/'});// set the upload files location without storage enginee
-const conn = require('../connection');
-const verifyToken = require('./verifyToken');
-const Project = require('../Models/Project');
-
-// eslint-disable-next-line no-unused-vars
-let gfs;
-// eslint-disable-next-line no-unused-vars
-conn.once('open', (err, _db) => {
-  console.log('Connected to MongodDB...');
-  gfs = GridFsStream(conn.db, mongoose.mongo);
-  gfs.collection('images');
-  if (err) {
-    throw err;
-  }
-});
-
-Router.post('/add', verifyToken, upload.array('projectimages', 2), (req, res) => {
-  // multer set req.file -single file upload ;req.files->multi files upload, name inside the upload.array() need to match up the frontend fieldname
-  // console.log(req.files);
-  // console.log(req.body);
-  const { projectName, technologies, description, demoLink, githubLink } = req.body;
-  const fullscreenfilename = req.files[0].filename;
-  const smallscreenfilename = req.files[1] ? req.files[1].filename : '';
-
-  Project.create(
-    {
-      projectName,
-      technologies,
-      description,
-      demoLink,
-      githubLink,
-      fullscreenfilename,
-      smallscreenfilename,
-    },
-    (err, newProject) => {
-      res.status(200).json({
-        fullscreenfilename: newProject.fullscreenfilename,
-        smallscreenfilename: newProject.smallscreenfilename,
-      });
-    },
-  );
-});
-
-Router.get('/images/:filename', (req, res) => {
-  const { filename } = req.params;
-  gfs.files.findOne({ filename }, (err, image) => {
-    console.log(image);
-    if (image === null) {
-      res.status(404).send('No such a image');
-    } else {
-      const readstream = gfs.createReadStream(image.filename); // get all the chuck information for this image file
-      readstream.pipe(res); // return image's base64 information to response
-      res.send('success');
-    }
-  });
-});
-
-module.exports = Router;
+const upload=multer({storage})
+*/
+// const upload=multer({}), you can see all the buffer information to the req.files as well.

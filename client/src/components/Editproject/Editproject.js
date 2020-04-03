@@ -63,6 +63,7 @@ function Editproject({ setLogin }) {
     formData.append('demoLink', demoLink);
     formData.append('githubLink', githubLink);
 
+    setMessage('Uploading...');
     axios
       .post('/api/projects/add', formData, {
         // eslint-disable-next-line no-undef
@@ -73,6 +74,8 @@ function Editproject({ setLogin }) {
       })
       .then(res => {
         console.log(res.data);
+        setMessage(res.data.message);
+        document.getElementById('addProjectForm').reset();
       })
       .catch(err => {
         setMessage(err.response.data.message);
@@ -91,6 +94,7 @@ function Editproject({ setLogin }) {
       <div style={{ marginTop: '100px' }}>
         <form
           onSubmit={addProject}
+          id="addProjectForm"
           style={{ width: '80%', height: '100vh', paddingTop: '20px' }}
           className="admin_form"
           encType="multipart/form-data"
@@ -169,7 +173,7 @@ function Editproject({ setLogin }) {
                 </div>
                 <div>
                   {previewURL !== '' && (
-                    <img src={previewURL} alt="fullscreen_preview" className="preview" />
+                    <img src={previewURL} alt="fullscreen_preview" className="preview1" />
                   )}
                 </div>
               </div>
@@ -189,7 +193,7 @@ function Editproject({ setLogin }) {
                 </div>
                 <div>
                   {previewSmall !== '' && (
-                    <img src={previewSmall} alt="mobile_preview" className="preview" />
+                    <img src={previewSmall} alt="mobile_preview" className="preview2" />
                   )}
                 </div>
               </div>
