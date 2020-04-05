@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CommonBtn from './CommonBtn';
 
-function ProjectBtn() {
+function HomeBtn() {
   return (
-    <Link to="/projects">
-      <CommonBtn name="PROJECTS" />
+    <Link to="/">
+      <CommonBtn name="HOME" />
     </Link>
   );
 }
 
-export default ProjectBtn;
+export default HomeBtn;

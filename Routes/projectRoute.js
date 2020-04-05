@@ -53,6 +53,15 @@ Router.post('/add', verifyToken, upload.array('projectimages', 2), async (req, r
   );
 });
 
+Router.get('/all', (req, res) => {
+  Project.find({}, (err, projects) => {
+    if (err) {
+      throw err;
+    }
+    res.status(200).json({ projects });
+  });
+});
+
 module.exports = Router;
 
 /** This is when you decide to upload the image to the mongoDB.
