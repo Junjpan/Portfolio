@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable prefer-const */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
@@ -14,6 +16,8 @@ function Editproject({ setLogin }) {
   const [githubLink, setGithubLink] = useState('');
   const [fullscreen, setFullScreen] = useState('');
   const [smallscreen, setSmallScreen] = useState('');
+  const [previewURL, setPreviewURL] = useState('');
+  const [previewSmall, setPreviewSmallURL] = useState('');
   const [message, setMessage] = useState('');
 
   const logout = () => {
@@ -22,25 +26,56 @@ function Editproject({ setLogin }) {
     localStorage.clear();
   };
 
+  let reader = new FileReader();
+
+  const uploadFullImage = e => {
+    e.preventDefault();
+    // receive all the basic information from the file ( name, lastModified, webkitRelativePath,size,type,)
+    const file = e.target.files[0];
+    setFullScreen(file);
+
+    reader.readAsDataURL(file); // set preview image. readAsDataUrl->image readAsText->documents
+    reader.onloadend = () => {
+      // reader.result is image's base64
+      setPreviewURL(reader.result);
+    };
+  };
+
+  const uploadMobileImage = e => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    setSmallScreen(file);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSmallURL(reader.result);
+    };
+  };
+
   const addProject = e => {
     e.preventDefault();
-    const projectInfo = {
-      projectName,
-      technologies,
-      description,
-      demoLink,
-      githubLink,
-      fullscreen,
-      smallscreen,
-    };
 
+    let formData = new FormData();
+    formData.append('projectimages', fullscreen);
+    formData.append('projectimages', smallscreen);
+    formData.append('projectName', projectName);
+    formData.append('technologies', technologies);
+    formData.append('description', description);
+    formData.append('demoLink', demoLink);
+    formData.append('githubLink', githubLink);
+
+    setMessage('Uploading...');
     axios
-      .post('/api/projects/add', projectInfo, {
+      .post('/api/projects/add', formData, {
         // eslint-disable-next-line no-undef
-        headers: { authentication: `Bearer ${localStorage.token}` }, // using the Bearer schema
+        headers: {
+          'Content-Type': `multipart/form-data`,
+          authentication: `Bearer ${localStorage.token}`,
+        }, // using the Bearer schema
       })
       .then(res => {
         console.log(res.data);
+        setMessage(res.data.message);
+        document.getElementById('addProjectForm').reset();
       })
       .catch(err => {
         setMessage(err.response.data.message);
@@ -53,11 +88,14 @@ function Editproject({ setLogin }) {
       <div className="logout" onClick={logout}>
         Log out
       </div>
+
       <Message message={message} />
+
       <div style={{ marginTop: '100px' }}>
         <form
           onSubmit={addProject}
-          style={{ width: '80%', height: '95vh', paddingTop: '20px' }}
+          id="addProjectForm"
+          style={{ width: '80%', height: '100vh', paddingTop: '20px' }}
           className="admin_form"
           encType="multipart/form-data"
         >
@@ -72,6 +110,7 @@ function Editproject({ setLogin }) {
               />
             </label>
             <br />
+
             <label htmlFor="Technologies">
               Technologies
               <input
@@ -82,6 +121,7 @@ function Editproject({ setLogin }) {
               />
             </label>
             <br />
+
             <label htmlFor="description">
               Description:
               <textarea
@@ -94,6 +134,7 @@ function Editproject({ setLogin }) {
               />
             </label>
             <br />
+
             <label htmlFor="demolink">
               Demo Link:
               <input
@@ -104,6 +145,7 @@ function Editproject({ setLogin }) {
               />
             </label>
             <br />
+
             <label htmlFor="githublink">
               Github Link:
               <input
@@ -114,31 +156,48 @@ function Editproject({ setLogin }) {
               />
             </label>
             <br />
+
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <label style={{ width: '300px', marginTop: '30px' }} htmlFor="fullscreen">
-                Project Full Screen Image
-                <input
-                  type="file"
-                  id="fullscreen"
-                  accept="image/*"
-                  onChange={e => setFullScreen(e.target.value)}
-                  required
-                />
-              </label>
+              <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '10px' }}>
+                <div>
+                  <label style={{ width: '300px', marginTop: '30px' }} htmlFor="fullscreen">
+                    Project Full Screen Image
+                    <input
+                      type="file"
+                      id="fullscreen"
+                      accept="image/*"
+                      onChange={uploadFullImage}
+                      required
+                    />
+                  </label>
+                </div>
+                <div>
+                  {previewURL !== '' && (
+                    <img src={previewURL} alt="fullscreen_preview" className="preview1" />
+                  )}
+                </div>
+              </div>
               <br />
-              <label style={{ width: '300px', marginTop: '30px' }} htmlFor="smallscreen">
-                Project Mobile Screen Image
-                <input
-                  type="file"
-                  accept="image/*"
-                  id="smallscreen"
-                  onChange={e => setSmallScreen(e.target.value)}
-                />
-              </label>
-              <br />
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '10px' }}>
+                <div>
+                  <label style={{ width: '300px', marginTop: '30px' }} htmlFor="smallscreen">
+                    Project Mobile Screen Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="smallscreen"
+                      onChange={uploadMobileImage}
+                    />
+                  </label>
+                </div>
+                <div>
+                  {previewSmall !== '' && (
+                    <img src={previewSmall} alt="mobile_preview" className="preview2" />
+                  )}
+                </div>
+              </div>
             </div>
-            <br />
-            <br />
             <hr />
             <button type="submit" className="generalBTN">
               Add a Project
