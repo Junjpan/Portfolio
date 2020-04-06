@@ -5,7 +5,7 @@ import CommonBtn from './CommonBtn';
 function HomeBtn() {
   return (
     <Link to="/">
-      <CommonBtn name="HOME" />
+      <CommonBtn name="ABOUT__ME" />
     </Link>
   );
 }

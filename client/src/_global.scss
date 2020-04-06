@@ -1,1 +1,32 @@
 $assentColor: rgb(8, 74, 135);
+@mixin sideBar {
+  padding: 20px 0px 200px auto;
+  background: black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  position: fixed;
+  top: 75px;
+  left: 0px;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: sidebarSlide 5s forwards;
+  animation: sidebarSlide 5s forwards;
+  overflow: auto;
+  scrollbar-color: #919191;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar-track {
+    -webkit-appearance: none;
+    border: 0.01rem solid transparent;
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0.7rem;
+    height: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    -webkit-appearance: none;
+    border: 0.1rem solid #919191;
+    background: #919191;
+  }
+}
