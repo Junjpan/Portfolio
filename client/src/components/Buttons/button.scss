@@ -16,6 +16,7 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
   animation: expand 7s 1 10s;
+  white-space: nowrap;
 
   &:hover {
     transform: scale(1.1);
