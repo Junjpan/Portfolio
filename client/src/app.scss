@@ -18,7 +18,7 @@ body {
 
 .Appcontainer,
 .formcontainer,
-.Editcontainer {
+.Addcontainer {
   position: absolute;
   width: 100%;
   background: $assentColor;
@@ -32,4 +32,8 @@ body {
   width: 100%;
   background: black;
   left: 0px;
+}
+
+.Editcontainer {
+  width: 100%;
 }

@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   margin: 30px auto;
   padding: 10px;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 300px) {
     width: 100%;
     padding: 0px;
   }
@@ -22,7 +22,12 @@
 
 .intro_body {
   font-size: 1.5rem;
-  white-space: wrap;
-  padding: 1rem;
+  white-space: pre-wrap;
   color: black;
+  padding: 2px;
+  @media screen and (max-width: 430px) {
+    padding: 0px;
+    font-size: 1.2rem;
+    word-wrap: break;
+  }
 }

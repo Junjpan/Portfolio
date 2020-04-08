@@ -1,18 +1,12 @@
-/* eslint-disable no-undef */
-/* eslint-disable prefer-const */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Logo from '../Logo/Logo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
 import Message from '../Message/Message';
-import ProjectBtn from '../Buttons/ProjectBtn';
-import Edit from './Edit';
+import ProjectOption from './ProjectOption';
 
-function Editproject({ setLogin }) {
+function Edit({ setEdit }) {
   const [projectName, setProjectName] = useState('');
   const [technologies, setTechnologies] = useState('');
   const [description, setdescription] = useState('');
@@ -22,98 +16,78 @@ function Editproject({ setLogin }) {
   const [smallscreen, setSmallScreen] = useState('');
   const [previewURL, setPreviewURL] = useState('');
   const [previewSmall, setPreviewSmallURL] = useState('');
+  const [projectArray, setProjectArray] = useState([]);
+  const [editIndex, setEditProjectIndex] = useState();
   const [message, setMessage] = useState('');
-  const [add, setAdd] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [projectNamesArray, setProjectNamesArray] = useState([]);
 
-  const logout = () => {
-    setLogin(false);
-    // eslint-disable-next-line no-undef
-    localStorage.clear();
-  };
-
-  let reader = new FileReader();
-
-  const uploadFullImage = e => {
-    e.preventDefault();
-    // receive all the basic information from the file ( name, lastModified, webkitRelativePath,size,type,)
-    const file = e.target.files[0];
-    setFullScreen(file);
-
-    reader.readAsDataURL(file); // set preview image. readAsDataUrl->image readAsText->documents
-    reader.onloadend = () => {
-      // reader.result is image's base64
-      setPreviewURL(reader.result);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const result = await axios.get('/api/projects/all');
+      try {
+        setProjectArray(result.data.projects);
+        const namesArray = result.data.projects.map(project => {
+          return project.projectName;
+        });
+        setProjectNamesArray(namesArray);
+      } catch (error) {
+        console.log(error);
+      }
     };
+
+    fetchProjects();
+  }, []);
+
+  useEffect(() => {
+    if (projectArray.length !== 0 && editIndex !== 'undefined') {
+      const current = projectArray[editIndex];
+      setProjectName(current.projectName);
+      setTechnologies(current.technologies);
+      setdescription(current.description);
+      setDemoLink(current.demoLink);
+      setGithubLink(current.githubLink);
+    }
+  }, [editIndex]);
+
+  const editProject = e => {
+    e.preventDefault();
+    console.log('edit');
   };
 
-  const uploadMobileImage = e => {
-    e.preventDefault();
-    const file = e.target.files[0];
-    setSmallScreen(file);
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSmallURL(reader.result);
-    };
+  const uploadFullImage = () => {
+    console.log('uploadFullImage');
   };
 
-  const addProject = e => {
-    e.preventDefault();
-
-    let formData = new FormData();
-    formData.append('projectimages', fullscreen);
-    formData.append('projectimages', smallscreen);
-    formData.append('projectName', projectName);
-    formData.append('technologies', technologies);
-    formData.append('description', description);
-    formData.append('demoLink', demoLink);
-    formData.append('githubLink', githubLink);
-
-    setMessage('Uploading...');
-    axios
-      .post('/api/projects/add', formData, {
-        // eslint-disable-next-line no-undef
-        headers: {
-          'Content-Type': `multipart/form-data`,
-          authentication: `Bearer ${localStorage.token}`,
-        }, // using the Bearer schema
-      })
-      .then(res => {
-        setMessage(res.data.message);
-        document.getElementById('addProjectForm').reset();
-      })
-      .catch(err => {
-        setMessage(err.response.data.message);
-      });
+  const uploadMobileImage = () => {
+    console.log('uploadmobileimage');
   };
 
   return (
-    <div className="Addcontainer">
-      <Logo />
-      <div className="logout" onClick={logout}>
-        Log out
-      </div>
+    <div className="Editcontainer">
       <Message message={message} />
-      <ProjectBtn />
-      {add ? (
-        <div style={{ marginTop: '100px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <ProjectOption
+          projectNamesArray={projectNamesArray}
+          setEditProjectIndex={setEditProjectIndex}
+        />
+        <div>
           <form
-            onSubmit={addProject}
+            onSubmit={editProject}
             id="addProjectForm"
             style={{ width: '80%', height: '100vh', paddingTop: '20px' }}
             className="admin_form"
-            encType="multipart/form-data"
           >
             <FontAwesomeIcon
               icon={faWindowClose}
               size="2x"
               style={{ marginLeft: '10px' }}
-              onClick={() => setAdd(false)}
+              onClick={() => setEdit(false)}
             />
             <div className="inner_form">
               <label htmlFor="projectName">
                 Project Name
                 <input
+                  value={projectName}
                   type="text"
                   id="projectName"
                   onChange={e => setProjectName(e.target.value)}
@@ -125,6 +99,7 @@ function Editproject({ setLogin }) {
               <label htmlFor="Technologies">
                 Technologies
                 <input
+                  value={technologies}
                   type="text"
                   id="Technologies"
                   onChange={e => setTechnologies(e.target.value)}
@@ -136,6 +111,7 @@ function Editproject({ setLogin }) {
               <label htmlFor="description">
                 Description:
                 <textarea
+                  value={description}
                   type="text"
                   id="description"
                   rows={3}
@@ -149,6 +125,7 @@ function Editproject({ setLogin }) {
               <label htmlFor="demolink">
                 Demo Link:
                 <input
+                  value={demoLink}
                   type="text"
                   id="demolink"
                   onChange={e => setDemoLink(e.target.value)}
@@ -160,6 +137,7 @@ function Editproject({ setLogin }) {
               <label htmlFor="githublink">
                 Github Link:
                 <input
+                  value={githubLink}
                   type="text"
                   id="githublink"
                   onChange={e => setGithubLink(e.target.value)}
@@ -211,47 +189,23 @@ function Editproject({ setLogin }) {
               </div>
               <hr />
               <button type="submit" className="generalBTN">
-                Add a Project
+                Edit a Project
               </button>
             </div>
           </form>
         </div>
-      ) : (
-        <div
-          onClick={() => {
-            setAdd(true);
-          }}
-        >
-          <div className="plus_BTN">
-            <FontAwesomeIcon icon={faPlus} style={{ marginRight: '10px' }} />
-            ADD A PROJECT
-          </div>
-        </div>
-      )}
-      {edit ? (
-        <Edit setEdit={setEdit} />
-      ) : (
-        <div
-          onClick={() => {
-            setEdit(true);
-          }}
-        >
-          <div className="plus_BTN">
-            <FontAwesomeIcon icon={faPlus} style={{ marginRight: '10px' }} />
-            EDIT A PROJECT
-          </div>
-        </div>
-      )}
+      </div>
+      )
     </div>
   );
 }
 
-Editproject.defaultProps = {
-  setLogin: false,
+Edit.defaultProps = {
+  setEdit: false,
 };
 
-Editproject.propTypes = {
-  setLogin: PropTypes.func,
+Edit.propTypes = {
+  setEdit: PropTypes.func,
 };
 
-export default Editproject;
+export default Edit;
