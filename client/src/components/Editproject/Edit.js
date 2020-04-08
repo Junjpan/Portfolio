@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -51,15 +52,50 @@ function Edit({ setEdit }) {
 
   const editProject = e => {
     e.preventDefault();
-    console.log('edit');
+    const formData = new FormData();
+    formData.append('editFullImages', fullscreen);
+    formData.append('editMobileImages', smallscreen);
+    formData.append('projectName', projectName);
+    formData.append('technologies', technologies);
+    formData.append('description', description);
+    formData.append('demoLink', demoLink);
+    formData.append('githubLink', githubLink);
+
+    const projectId = projectArray[editIndex]._id;
+
+    setMessage('Uploading the changes...');
+    axios
+      .patch(`/api/projects/edit/${projectId}`, formData, {
+        'Content-Type': 'multipart/form-data',
+        headers: { authentication: `Bearer ${localStorage.token}` },
+      })
+      .then(res => {
+        console.log(res.data);
+        setMessage(res.data.message);
+        document.getElementById('editProjectForm').reset();
+      })
+      .catch(err => {
+        setMessage(err.response.data.message);
+      });
   };
 
-  const uploadFullImage = () => {
-    console.log('uploadFullImage');
+  const reader = new FileReader();
+
+  const uploadFullImage = e => {
+    // the files info is stored in the array
+    setFullScreen(e.target.files[0]);
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onloadend = () => {
+      setPreviewURL(reader.result);
+    };
   };
 
-  const uploadMobileImage = () => {
-    console.log('uploadmobileimage');
+  const uploadMobileImage = e => {
+    setSmallScreen(e.target.files[0]);
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onloadend = () => {
+      setPreviewSmallURL(reader.result);
+    };
   };
 
   return (
@@ -73,8 +109,8 @@ function Edit({ setEdit }) {
         <div>
           <form
             onSubmit={editProject}
-            id="addProjectForm"
-            style={{ width: '80%', height: '100vh', paddingTop: '20px' }}
+            id="editProjectForm"
+            style={{ width: '80%', height: '110vh', paddingTop: '20px' }}
             className="admin_form"
           >
             <FontAwesomeIcon
@@ -156,7 +192,6 @@ function Edit({ setEdit }) {
                         id="fullscreen"
                         accept="image/*"
                         onChange={uploadFullImage}
-                        required
                       />
                     </label>
                   </div>

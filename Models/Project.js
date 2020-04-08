@@ -9,6 +9,10 @@ const ProjectSchema = new mongoose.Schema({
   githubLink: String,
   fullscreenlink: String,
   smallscreenlink: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = conn.model('Project', ProjectSchema);

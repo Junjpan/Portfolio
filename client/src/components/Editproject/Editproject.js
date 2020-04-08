@@ -100,7 +100,7 @@ function Editproject({ setLogin }) {
           <form
             onSubmit={addProject}
             id="addProjectForm"
-            style={{ width: '80%', height: '100vh', paddingTop: '20px' }}
+            style={{ width: '80%', height: '110vh', paddingTop: '20px' }}
             className="admin_form"
             encType="multipart/form-data"
           >
