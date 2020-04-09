@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 const Router = require('express').Router();
 const multer = require('multer');
@@ -109,6 +110,16 @@ Router.get('/all', (_req, res) => {
     });
 });
 
+Router.delete('/delete/:projectId', verifyToken, (req, res) => {
+  Project.deleteOne({ _id: req.params.projectId }, (err, _result) => {
+    if (err) {
+      res
+        .status(400)
+        .json({ message: "Project wasn't able to be deleted, please try again later" });
+    }
+    res.status(200).json({ message: 'Project has been deleted.' });
+  });
+});
 module.exports = Router;
 
 /** This is when you decide to upload the image to the mongoDB.

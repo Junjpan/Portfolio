@@ -7,9 +7,9 @@ function Introduction() {
       key: 1,
       title: 'Who I Am',
       text: `
-      My name is Jun, I'm a frontend/full stack developer. I 
-      have nearly 3 years of web development experience. I 
-      love coding and making dynamic applications and 
+      My name is Jun, I'm a frontend/full stack developer. 
+      I have nearly 3 years of web development experience. 
+      I love coding and making dynamic applications and 
       products. In my spare time I love photography and 
       spending my time with my family. I also speak three 
       languages.`,
@@ -24,12 +24,12 @@ function Introduction() {
           key: 2,
           title: 'Why Work With Me?',
           text: `   
-             I'm a detail-oriented, diligent and intellectually 
-             curious person. I'm a great team player and 
-             always lend a careful ear to work in a 
-             constructive way with my team.  As a 
-             consummate learner I’m always eager to learn 
-             new technologies and push the edge technically.`,
+          I'm a detail-oriented, diligent and intellectually 
+          curious person. I'm a great team player and 
+          always lend a careful ear to work in a 
+          constructive way with my team.  As a 
+          consummate learner I’m always eager to learn 
+          new technologies and push the edge technically.`,
         },
       ]);
     }, 2000);
@@ -43,18 +43,18 @@ function Introduction() {
           key: 3,
           title: 'My Technical Background',
           text: `
-             Languages: Javascript/ES6,CSS3/CSS,SASS,
-                        HTML5/HTML
-             Libraries/APIs: React,Node.js,Jquery,Socket.io, 
-                        Styled Component,D3.js,Chart.js                        
-             Frameworks: Express.js,Boostrap
-             Tools: Git,NPM,VS Code,Webpack
-             Storages: MongoDB 
-             Platform: VS Code,Windows,Github,Heroku,
-                         Cloudinary 
-             Others: MERN Stack,Full Stack,Frontend,UI,
-                      ESLint,Restful APIs,JSON,Pug(JADE),
-                      AJAX,Responsive web design.`,
+          Languages: Javascript/ES6,CSS3/CSS,SASS,
+                              HTML5/HTML,Pug(JADE)
+          Libraries/APIs: React,Node.js,Jquery,Socket.io, 
+                                 Styled Component,D3.js,Chart.js                        
+          Frameworks: Express.js,Boostrap
+          Tools: Git,NPM,VS Code,Webpack,Terminal
+          Storages: MongoDB 
+          Platform: VS Code,Windows,Github,Heroku,
+                          Codepen,Cloudinary 
+          Others: MERN Stack,Full Stack,Frontend,UI,
+                      ESLint,Restful APIs,JSON,AJAX,
+                      Responsive web design.`,
         },
       ]);
     }, 4500);

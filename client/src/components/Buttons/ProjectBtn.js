@@ -5,7 +5,7 @@ import CommonBtn from './CommonBtn';
 function ProjectBtn() {
   return (
     <Link to="/projects">
-      <CommonBtn name="PROJECTS" />
+      <CommonBtn name="MY WORK" />
     </Link>
   );
 }

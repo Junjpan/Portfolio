@@ -26,7 +26,7 @@ function Projects() {
   return (
     <div className="Projects_container">
       <Message message={message} />
-      <div className="title">PROJECTS DISPLAY</div>
+      <div className="title">MY WORK</div>
       <div style={{ height: '60px', width: '100%' }} />
       {mounted ? (
         <div>

@@ -50,6 +50,22 @@ function Edit({ setEdit }) {
     }
   }, [editIndex]);
 
+  const deleteproject = () => {
+    if (editIndex !== 'undefined') {
+      // eslint-disable-next-line no-alert
+      const confirm = window.confirm('Are you sure you want to delete this project?');
+      if (confirm === true) {
+        const projectId = projectArray[editIndex]._id;
+        axios
+          .delete(`/api/projects/delete/${projectId}`, {
+            headers: { authentication: `Bearer ${localStorage.token}` },
+          })
+          .then(res => setMessage(res.data.message))
+          .catch(err => setMessage(err.response.data.message));
+      }
+    }
+  };
+
   const editProject = e => {
     e.preventDefault();
     const formData = new FormData();
@@ -70,7 +86,6 @@ function Edit({ setEdit }) {
         headers: { authentication: `Bearer ${localStorage.token}` },
       })
       .then(res => {
-        console.log(res.data);
         setMessage(res.data.message);
         document.getElementById('editProjectForm').reset();
       })
@@ -223,9 +238,14 @@ function Edit({ setEdit }) {
                 </div>
               </div>
               <hr />
-              <button type="submit" className="generalBTN">
-                Edit a Project
-              </button>
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                <button type="submit" className="generalBTN">
+                  Edit a Project
+                </button>
+                <button type="button" className="generalBTN" onClick={deleteproject}>
+                  Delete a Project
+                </button>
+              </div>
             </div>
           </form>
         </div>
