@@ -72,8 +72,8 @@ function Profile() {
               <b style={props}>
                 I'm a
                 <Spring
-                  from={{ color: 'white' }}
-                  to={{ color: 'black' }}
+                  from={{ color: 'black' }}
+                  to={{ color: 'rgb(8, 95, 117)' }}
                   config={{ delay: 7000, duration: 1000 }}
                 >
                   {prop => <span style={prop}> Frontend Developer/Full Stack Developer</span>}

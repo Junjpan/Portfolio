@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAddressCard, faUsersCog, faCode } from '@fortawesome/free-solid-svg-icons';
 
 function Introduction() {
   const [introArray, setIntroductionArray] = useState([
     {
       key: 1,
-      title: 'Who I Am',
+      title: 'ABOUT ME',
+      icon: faAddressCard,
       text: `
       My name is Jun, I'm a frontend/full stack developer. 
       I have nearly 3 years of web development experience. 
@@ -23,6 +26,7 @@ function Introduction() {
         {
           key: 2,
           title: 'Why Work With Me?',
+          icon: faUsersCog,
           text: `   
           I'm a detail-oriented, diligent and intellectually 
           curious person. I'm a great team player and 
@@ -42,6 +46,7 @@ function Introduction() {
         {
           key: 3,
           title: 'My Technical Background',
+          icon: faCode,
           text: `
           Languages: Javascript/ES6,CSS3/CSS,SASS,
                               HTML5/HTML,Pug(JADE)
@@ -62,11 +67,13 @@ function Introduction() {
 
   function Animated(items) {
     const transitions = useTransition(items, item => item.key, {
-      from: { transform: 'translate3d(-1000px,0,0)', height: '0px', opacity: 0 },
-      enter: { transform: 'translate3d(0px,0,0)', height: '340px', opacity: 1 },
+      from: { transform: 'translate3d(-1000px,0,0)', height: '0px', width: '0px', opacity: 0 },
+      enter: { transform: 'translate3d(0px,0,0)', height: '340px', width: '320px', opacity: 1 },
       config: { duration: 2000 },
     });
 
+    // border: '1px solid white',
+    // boxShadow: '2px 3px 3px black',
     return transitions.map(({ item, key, props }) => {
       return (
         <animated.div
@@ -74,13 +81,17 @@ function Introduction() {
           style={{
             width: '320px',
             height: '340px',
-            border: '1px solid white',
             margin: '0px auto 10px auto',
-            boxShadow: '2px 3px 3px black',
             ...props,
           }}
         >
-          <div className="intro_title">{item.title}</div>
+          <div className="intro_title">
+            <FontAwesomeIcon
+              icon={item.icon}
+              style={{ marginRight: '10px', color: 'rgb(63, 79, 99)' }}
+            />
+            {item.title}
+          </div>
           <div className="intro_body">{item.text}</div>
         </animated.div>
       );

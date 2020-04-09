@@ -3,7 +3,7 @@
 .title {
   padding: 15px 20px;
   width: 100%;
-  color: $assentColor;
+  color: black;
   position: fixed !important;
   top: 0px;
   font-size: 3rem;
@@ -47,6 +47,8 @@
 .sidebar_image_container {
   margin: 0px auto;
   border: 10px solid black;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 
   &:hover {
     border: 10px solid #08fdd8;

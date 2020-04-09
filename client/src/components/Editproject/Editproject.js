@@ -238,7 +238,7 @@ function Editproject({ setLogin }) {
         >
           <div className="plus_BTN">
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: '10px' }} />
-            EDIT A PROJECT
+            EDIT/DELETE A PROJECT
           </div>
         </div>
       )}
