@@ -46,14 +46,13 @@
 
 .sidebar_image_container {
   margin: 0px auto;
-  border: 10px solid black;
+  border: 10px solid #08fdd8;
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
 
   &:hover {
-    border: 10px solid #08fdd8;
-    filter: drop-shadow(8px 8px 10px gray);
-    -webkit-filter: drop-shadow(8px 8px 10px gray);
+    filter: drop-shadow(2px 2px 3px #08fdd8);
+    -webkit-filter: drop-shadow(2px 2px 3px #08fdd8);
     cursor: pointer;
   }
 }

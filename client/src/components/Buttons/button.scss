@@ -1,25 +1,14 @@
 @import '../../_global';
 
 .project_btn {
-  display: flex;
-  justify-content: space-around;
-  color: white;
-  width: 50px;
-  height: 170px;
-  top: 0px;
-  background: rgb(45, 54, 69); //rgb(3, 30, 61);
-  font-size: 3rem;
-  text-align: center;
-  position: fixed;
-  padding: 15px 5px;
+  @include menubutton;
   right: 0px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  animation: expand 7s 1 10s;
-  white-space: nowrap;
-
+  animation: expand 7s 1 8s;
+  height: 170px;
+  background: rgb(45, 54, 69);
   &:hover {
     border-left: 5px solid #08fdd8;
+    color: #08fdd8;
     cursor: pointer;
     .outer_circle,
     .inner_circle {
@@ -29,6 +18,24 @@
 
   @media screen and (max-width: 480px) {
     height: 150px;
+    font-size: 2.5rem;
+  }
+}
+
+.resource_btn {
+  @include menubutton;
+  background: rgb(3, 30, 61);
+  right: 65px;
+  height: 130px;
+  animation: expand1 7s 1 15s;
+  &:hover {
+    border-left: 5px solid #08fdd8;
+    cursor: pointer;
+    color: #08fdd8;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 110px;
     font-size: 2.5rem;
   }
 }
@@ -85,5 +92,16 @@
   100% {
     opacity: 1;
     height: 170px;
+  }
+}
+
+@keyframes expand1 {
+  0% {
+    opacity: 0;
+    height: 0px;
+  }
+  100% {
+    opacity: 1;
+    height: 130px;
   }
 }

@@ -68,7 +68,7 @@ function Introduction() {
   function Animated(items) {
     const transitions = useTransition(items, item => item.key, {
       from: { transform: 'translate3d(-1000px,0,0)', height: '0px', width: '0px', opacity: 0 },
-      enter: { transform: 'translate3d(0px,0,0)', height: '340px', width: '320px', opacity: 1 },
+      enter: { transform: 'translate3d(0px,0,0)', height: '340px', width: '310px', opacity: 1 },
       config: { duration: 2000 },
     });
 
@@ -79,7 +79,7 @@ function Introduction() {
         <animated.div
           key={key}
           style={{
-            width: '320px',
+            width: '310px',
             height: '340px',
             margin: '0px auto 10px auto',
             ...props,

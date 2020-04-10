@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDragon } from '@fortawesome/free-solid-svg-icons';
 import HomeBtn from '../Buttons/HomeBtn';
+import ResourceBtn from '../Buttons/ResourceBtn';
 import Message from '../Message/Message';
 import Project from './Project';
 import Loading from '../Buttons/Loading';
@@ -57,6 +58,7 @@ function Projects() {
         <Loading />
       )}
       <HomeBtn />
+      <ResourceBtn />
     </div>
   );
 }

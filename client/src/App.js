@@ -6,9 +6,11 @@ import Logo from './components/Logo/Logo';
 import Profile from './components/Profile/Profile';
 import Introduction from './components/Introduction/Introduction';
 import ProjectBtn from './components/Buttons/ProjectBtn';
+import EditProject from './components/Editproject/Editproject';
 import Admin from './components/Admin/Admin';
 import Projects from './components/Projects/Projects';
-import EditProject from './components/Editproject/Editproject';
+import Resources from './components/Resources/Resources';
+import ResourceBtn from './components/Buttons/ResourceBtn';
 
 if (process.env.NODE_ENV === 'development') {
   axios.defaults.baseURL = 'http://localhost:5000';
@@ -30,12 +32,14 @@ function App() {
                   <Profile />
                   <Introduction />
                 </div>
+                <ResourceBtn />
                 <ProjectBtn />
               </div>
             );
           }}
         />
         <Route path="/projects" exact component={Projects} />
+        <Route path="/resources" exact component={Resources} />
         <Route
           path="/admin"
           exact

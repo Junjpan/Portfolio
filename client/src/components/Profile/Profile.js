@@ -58,7 +58,7 @@ function Profile() {
   return (
     <div className="profile">
       <div>
-        <h1>
+        <h1 style={{ fontSize: '3rem' }}>
           <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ duration: 1000 }}>
             {props => <b style={props}> Hi, I'm Jun. </b>}
           </Spring>
