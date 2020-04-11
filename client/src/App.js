@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 
 function App() {
   const [login, setLogin] = useState(false);
+  const loginstatus = localStorage.token;
   return (
     <Router>
       <Switch>
@@ -44,7 +46,11 @@ function App() {
           path="/admin"
           exact
           render={props => {
-            return login ? <EditProject setLogin={setLogin} /> : <Admin setLogin={setLogin} />;
+            return loginstatus ? (
+              <EditProject setLogin={setLogin} />
+            ) : (
+              <Admin setLogin={setLogin} />
+            );
           }}
         />
       </Switch>

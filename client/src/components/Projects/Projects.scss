@@ -1,13 +1,7 @@
 @import '../../_global.scss';
 
 .title {
-  padding: 15px 20px;
-  width: 100%;
-  color: black;
-  position: fixed !important;
-  top: 0px;
-  font-size: 3rem;
-  background: white;
+  @include title;
 }
 .sidebar_container {
   @include sideBar;
@@ -124,8 +118,8 @@
   border-radius: 5px;
   border: 2px solid black;
   box-shadow: 3px 3px 3px black;
-  transition: transform 10s;
   &:hover {
+    transition: transform 10s;
     transform: scale(1.2);
     cursor: pointer;
   }

@@ -10,6 +10,7 @@ import axios from 'axios';
 import Logo from '../Logo/Logo';
 import Message from '../Message/Message';
 import ProjectBtn from '../Buttons/ProjectBtn';
+import ResourceBtn from '../Buttons/ResourceBtn';
 import Edit from './Edit';
 
 function Editproject({ setLogin }) {
@@ -30,6 +31,7 @@ function Editproject({ setLogin }) {
     setLogin(false);
     // eslint-disable-next-line no-undef
     localStorage.clear();
+    window.location.href = '/';
   };
 
   let reader = new FileReader();
@@ -95,6 +97,7 @@ function Editproject({ setLogin }) {
       </div>
       <Message message={message} />
       <ProjectBtn />
+      <ResourceBtn />
       {add ? (
         <div style={{ marginTop: '100px' }}>
           <form

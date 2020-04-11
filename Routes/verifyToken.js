@@ -15,7 +15,7 @@ const verifyToken = (req, res, next) => {
       }
     });
   } else {
-    res.status(403).json({ message: 'Sorry, you are forbidden. Login and try again.' });
+    res.status(403).json({ message: 'Sorry, you are forbidden. Please login first.' });
   }
 };
 
