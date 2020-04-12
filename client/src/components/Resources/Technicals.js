@@ -6,6 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import AddTechForm from './AddTechForm';
 import Loading from '../Buttons/Loading';
+import Cell from './Cell';
 
 function Technicals() {
   const [technicals, setTechnicals] = useState([]);
@@ -30,9 +31,12 @@ function Technicals() {
         <div className="res_center">
           {technicals.map(technical => {
             return (
-              <div className="cell" key={technical._id}>
-                {technical.subject}
-              </div>
+              <Cell
+                key={technical._id}
+                id={technical._id}
+                subject={technical.subject}
+                articalsArr={technical.articalsArr}
+              />
             );
           })}
           {add ? (

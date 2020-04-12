@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Message from '../Message/Message';
@@ -8,6 +8,10 @@ import Message from '../Message/Message';
 function AddTechForm({ setAdd }) {
   const [message, setMessage] = useState('');
   const [subject, setSubject] = useState('');
+
+  useEffect(() => {
+    setTimeout(() => setMessage(''), 10000);
+  }, [message]);
 
   const addTechForm = e => {
     e.preventDefault();

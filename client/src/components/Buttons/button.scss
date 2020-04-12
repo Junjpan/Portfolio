@@ -2,7 +2,7 @@
 
 .project_btn {
   @include menubutton;
-  right: 0px;
+  right: 15px;
   animation: expand 7s 1 8s;
   height: 170px;
   background: rgb(45, 54, 69);
@@ -25,7 +25,7 @@
 .resource_btn {
   @include menubutton;
   background: rgb(3, 30, 61);
-  right: 65px;
+  right: 80px;
   height: 130px;
   animation: expand1 7s 1 15s;
   &:hover {

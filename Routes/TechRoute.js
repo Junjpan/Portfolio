@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
 const Router = require('express').Router();
 const verifyToken = require('./verifyToken');
@@ -25,4 +26,18 @@ Router.get('/all', (req, res) => {
   });
 });
 
+Router.post('/changename/:_id', verifyToken, (req, res) => {
+  const { _id } = req.params;
+  const { subject } = req.body;
+
+  Technical.findById(_id, (err, tech) => {
+    if (err) {
+      res.status(404).send({ message: 'Something wrong with server, please try again.' });
+    }
+    tech.subject = subject;
+    tech.save(() => {
+      res.status(200);
+    });
+  });
+});
 module.exports = Router;

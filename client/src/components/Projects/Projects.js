@@ -18,7 +18,6 @@ function Projects() {
     axios
       .get('api/projects/all')
       .then(res => {
-        console.log(res.data.projects);
         setAllProjects(res.data.projects);
         setMounted(true);
       })
