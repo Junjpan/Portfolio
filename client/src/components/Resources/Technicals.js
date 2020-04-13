@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
@@ -7,11 +8,14 @@ import axios from 'axios';
 import AddTechForm from './AddTechForm';
 import Loading from '../Buttons/Loading';
 import Cell from './Cell';
+import Articles from './Articles';
 
 function Technicals() {
   const [technicals, setTechnicals] = useState([]);
   const [add, setAdd] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [articleView, setArticleView] = useState(false);
+  const [techId, setTechId] = useState('');
 
   useEffect(() => {
     axios
@@ -27,6 +31,8 @@ function Technicals() {
     <div>
       {loading ? (
         <Loading />
+      ) : articleView ? (
+        <Articles techId={techId} setArticleView={setArticleView} />
       ) : (
         <div className="res_center">
           {technicals.map(technical => {
@@ -36,6 +42,8 @@ function Technicals() {
                 id={technical._id}
                 subject={technical.subject}
                 articalsArr={technical.articalsArr}
+                setArticleView={setArticleView}
+                setTechId={setTechId}
               />
             );
           })}

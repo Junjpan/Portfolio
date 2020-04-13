@@ -60,3 +60,42 @@ $titleFont: 'Prompt', sans-serif;
   font-size: 3rem;
   background: white;
 }
+
+@mixin resourcesContainer {
+  width: 70%;
+  height: 87vh;
+  overflow-y: auto;
+  margin: 105px auto 0px auto;
+  scrollbar-color: #919191;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar-track {
+    -webkit-appearance: none;
+    border: 0.01rem solid transparent;
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0.7rem;
+    height: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    -webkit-appearance: none;
+    border: 0.1rem solid #919191;
+    background: #919191;
+  }
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+}
+
+@mixin res_sidebar {
+  width: 100px;
+  height: 85vh;
+  background: rgba(white, 0.5);
+  display: fixed;
+  left: 0px;
+  top: 90px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 2.5rem;
+}

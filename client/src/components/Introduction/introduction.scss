@@ -13,11 +13,11 @@
 }
 
 .intro_title {
-  background-image: linear-gradient(180deg, white, transparent, transparent 80%, $assentColor);
   color: black;
   height: 40px;
   font-size: 2.2rem;
   text-align: center;
+  border-bottom: 1px solid gray;
 }
 
 .intro_body {

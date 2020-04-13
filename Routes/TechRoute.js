@@ -26,6 +26,18 @@ Router.get('/all', (req, res) => {
   });
 });
 
+Router.get('/articles/:_id', (req, res) => {
+  const { _id } = req.params;
+  Technical.findById(_id)
+    .populate({ path: 'articalsArr', model: Article })
+    .then(tech => {
+      res.status(200).send({ info: tech });
+    })
+    .catch(err => {
+      res.status(404).send({ message: 'Something wrong with server.' });
+    });
+});
+
 Router.post('/changename/:_id', verifyToken, (req, res) => {
   const { _id } = req.params;
   const { subject } = req.body;

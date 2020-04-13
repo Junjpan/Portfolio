@@ -72,8 +72,11 @@ function Profile() {
               <b style={props}>
                 I'm a
                 <Spring
-                  from={{ color: 'black' }}
-                  to={{ color: 'rgb(8, 95, 117)' }}
+                  from={{ color: 'white' }}
+                  to={{
+                    color: '#08fdd8',
+                    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+                  }}
                   config={{ delay: 7000, duration: 1000 }}
                 >
                   {prop => <span style={prop}> Frontend Developer/Full Stack Developer</span>}
@@ -93,8 +96,7 @@ function Profile() {
         <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ delay: 3000, duration: 1000 }}>
           {props => (
             <p style={{ color: 'black', fontSize: '1.5rem', ...props }}>
-              <FontAwesomeIcon icon={faAddressCard} size="1x" style={{ color: 'black' }} /> Contact
-              : merrypjj@yahoo.com
+              <FontAwesomeIcon icon={faAddressCard} size="1x" /> Contact : merrypjj@yahoo.com
             </p>
           )}
         </Spring>

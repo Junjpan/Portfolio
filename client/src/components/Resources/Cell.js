@@ -7,7 +7,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Message from '../Message/Message';
 
-function Cell({ subject, articalsArr, id }) {
+function Cell({ subject, articalsArr, id, setArticleView, setTechId }) {
   const [editName, setEditName] = useState(false);
   const [message, setMessage] = useState('');
   const menuContainer = React.createRef();
@@ -50,8 +50,16 @@ function Cell({ subject, articalsArr, id }) {
   return (
     <div className="cell">
       {editName ? (
-        <div className="menu" onClick={openPrompt} ref={menuContainer}>
-          Change Subject
+        <div className="menu" ref={menuContainer}>
+          <div onClick={openPrompt}>Change Subject</div>
+          <div
+            onClick={() => {
+              setArticleView(true);
+              setTechId(id);
+            }}
+          >
+            View Articles
+          </div>
         </div>
       ) : (
         <FontAwesomeIcon
@@ -71,12 +79,16 @@ Cell.defaultProps = {
   subject: '',
   articalsArr: [],
   id: '',
+  setArticleView: () => {},
+  setTechId: () => {},
 };
 
 Cell.propTypes = {
   subject: PropTypes.string,
   articalsArr: PropTypes.instanceOf(Array),
   id: PropTypes.string,
+  setArticleView: PropTypes.func,
+  setTechId: PropTypes.func,
 };
 
 export default Cell;
