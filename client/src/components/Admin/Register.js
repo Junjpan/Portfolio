@@ -10,10 +10,11 @@ function Register({ setRegister }) {
   const [username, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [invitationkey, setInvitationKey] = useState('');
 
   const submitRegister = e => {
     e.preventDefault();
-    const userinfo = { username, password };
+    const userinfo = { username, password, invitationkey };
     axios
       .post('/api/user/register', userinfo)
       .then(res => {
@@ -49,6 +50,16 @@ function Register({ setRegister }) {
             type="password"
             pattern=".{6,12}"
             onChange={e => setPassword(e.target.value)}
+            required
+          />
+          <br />
+          <label htmlFor="invitationkey">Invitation Key:</label>
+          <br />
+          <input
+            name="invitationkey"
+            id="invitationkey"
+            type="text"
+            onChange={e => setInvitationKey(e.target.value)}
             required
           />
           <br />

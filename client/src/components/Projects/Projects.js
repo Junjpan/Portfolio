@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDragon } from '@fortawesome/free-solid-svg-icons';
 import HomeBtn from '../Buttons/HomeBtn';
+import ResourceBtn from '../Buttons/ResourceBtn';
 import Message from '../Message/Message';
 import Project from './Project';
 import Loading from '../Buttons/Loading';
@@ -15,7 +18,6 @@ function Projects() {
     axios
       .get('api/projects/all')
       .then(res => {
-        console.log(res.data.projects);
         setAllProjects(res.data.projects);
         setMounted(true);
       })
@@ -26,7 +28,10 @@ function Projects() {
   return (
     <div className="Projects_container">
       <Message message={message} />
-      <div className="title">PROJECTS DISPLAY</div>
+      <div className="title">
+        PROJECTS
+        <FontAwesomeIcon icon={faDragon} style={{ color: '#08fdd8' }} />
+      </div>
       <div style={{ height: '60px', width: '100%' }} />
       {mounted ? (
         <div>
@@ -52,6 +57,7 @@ function Projects() {
         <Loading />
       )}
       <HomeBtn />
+      <ResourceBtn />
     </div>
   );
 }

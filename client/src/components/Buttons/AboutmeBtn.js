@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CommonBtn from './CommonBtn';
 
-function HomeBtn() {
+function AboutmeBtn() {
   return (
     <Link to="/">
-      <CommonBtn name="ABOUT ME" />
+      <div className="resource_btn">ABOUT ME</div>
     </Link>
   );
 }
 
-export default HomeBtn;
+export default AboutmeBtn;

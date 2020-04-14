@@ -1,7 +1,7 @@
 .logout {
   position: absolute;
   top: 10px;
-  right: 25px;
+  right: 160px;
   font-size: 1.5rem;
   color: white;
   width: 100px;
@@ -13,7 +13,8 @@
     border: 2px solid white;
   }
   @media screen and (max-width: 480px) {
-    right: 5px;
+    left: 5px;
+    top: 45px;
     width: 70px;
   }
 }
@@ -23,17 +24,23 @@
   font-size: 2rem;
   padding: 0.5rem 1rem;
   height: 35px;
-  color: white;
+  color: black;
   background: transparent;
   text-align: center;
   text-transform: uppercase;
-  border: 1px solid lightgray;
+  border: 1px solid black;
   margin: 25px auto;
   &:hover {
     cursor: pointer;
-    border-color: black;
-    color: black;
+    border-color: gray;
+    color: gray;
   }
+}
+
+.plus_BTN {
+  font-size: 3rem;
+  margin-top: 100px;
+  margin-left: 10%;
 }
 
 .preview1 {

@@ -17,7 +17,9 @@ function Project({ name, tech, description, demoLink, github, fullscreen, smalls
       </div>
       <div className="projectimage">
         <div>
-          <img src={fullscreen} alt={name} className="fullscreen" />
+          <div className="fullscreen_container">
+            <img src={fullscreen} alt={name} className="fullscreen" />
+          </div>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             <button type="button" className="linkBTN">
               <a href={github} target="_blank" rel="noopener noreferrer">
