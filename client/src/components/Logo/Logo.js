@@ -8,9 +8,6 @@ function Logo() {
       <div className="logoFrame">
         <img src={logo1} alt="logo1" width="60px" height="60px" />
       </div>
-      <div style={{ marginLeft: '5px', border: '5px double gray' }}>
-        <img src={logo2} alt="logo2" width="60px" height="60px" />
-      </div>
     </div>
   );
 }

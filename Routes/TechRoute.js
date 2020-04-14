@@ -38,6 +38,12 @@ Router.get('/articles/:_id', (req, res) => {
     });
 });
 
+Router.post('/articles/add/:_id', verifyToken, (req, res) => {
+  console.log(req.params._id);
+  console.log(req.body);
+  res.send('success');
+});
+
 Router.post('/changename/:_id', verifyToken, (req, res) => {
   const { _id } = req.params;
   const { subject } = req.body;

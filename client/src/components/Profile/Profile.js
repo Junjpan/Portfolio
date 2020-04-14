@@ -58,7 +58,7 @@ function Profile() {
   return (
     <div className="profile">
       <div>
-        <h1 style={{ fontSize: '3rem' }}>
+        <h1>
           <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ duration: 1000 }}>
             {props => <b style={props}> Hi, I'm Jun. </b>}
           </Spring>
@@ -72,10 +72,10 @@ function Profile() {
               <b style={props}>
                 I'm a
                 <Spring
-                  from={{ color: 'white' }}
+                  from={{ color: 'black' }}
                   to={{
-                    color: '#08fdd8',
-                    textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black',
+                    color: 'white',
+                    textShadow: '0 0 3px black,0 0 5px black',
                   }}
                   config={{ delay: 7000, duration: 1000 }}
                 >

@@ -1,5 +1,5 @@
 .profile {
-  color: white;
+  color: black;
   display: flex;
   flex-wrap: wrap;
   margin: 150px auto 10px;
@@ -10,13 +10,21 @@
 .profile_image {
   border: 5px solid white;
   box-shadow: 2px 3px 3px 3px black;
+  margin-top: -40px;
+  @media screen and (max-width: 1200px) {
+    margin-top: 0px;
+  }
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
+
+  @media screen and (max-width: 800px) {
+    font-size: 2.8rem;
+  }
 }
 
 a {
   text-decoration: none;
-  color: rgb(87, 9, 32);
+  color: black;
 }

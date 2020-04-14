@@ -5,12 +5,14 @@ import { faBars, faTimesCircle, faHome, faPlusSquare } from '@fortawesome/free-s
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Loading from '../Buttons/Loading';
+import AddArticle from './AddArticle';
 
 function Articles({ techId, setArticleView }) {
   const [message, setMessage] = useState('');
   const [subject, setSubject] = useState('');
   const [articleArr, setArticleArr] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [addArticle, setAddArticle] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setMessage(''), 10000);
@@ -38,7 +40,13 @@ function Articles({ techId, setArticleView }) {
       ) : (
         <div className="arc_center">
           {showSidebar ? (
-            <span className="res_closeBTN" onClick={() => setShowSidebar(false)}>
+            <span
+              className="res_closeBTN"
+              onClick={() => {
+                setShowSidebar(false);
+                setAddArticle(false);
+              }}
+            >
               <FontAwesomeIcon icon={faTimesCircle} size="2x" />
             </span>
           ) : (
@@ -62,9 +70,11 @@ function Articles({ techId, setArticleView }) {
                 className="article_sidebar_icon"
                 icon={faPlusSquare}
                 title="Add a new article Link"
+                onClick={() => setAddArticle(true)}
               />
             </div>
           </div>
+          {addArticle && <AddArticle setAddArticle={setAddArticle} techId={techId} />}
           <div className="discclaimer">
             Disclaimer:These links are being provided as a convenience and for informational
             purposed only. I bear no responsibility for the accuracy, legality of content of the
