@@ -7,18 +7,19 @@
 @import './components/Projects/Projects.scss';
 @import './components/Admin/admin.scss';
 @import './components/Editproject/Editproject.scss';
+@import './components/Resources/Resources.scss';
 
 html {
   font-size: 10px;
   font-family: 'Oswald', sans-serif;
 }
 body {
-  background: gray;
+  background: white;
+  margin: 0px;
 }
 
-.Appcontainer,
 .formcontainer,
-.Editcontainer {
+.Addcontainer {
   position: absolute;
   width: 100%;
   background: $assentColor;
@@ -27,9 +28,24 @@ body {
   height: 200px;
 }
 
+.Appcontainer {
+  position: absolute;
+  width: 100%;
+  background-image: url('https://images.pexels.com/photos/159825/color-pencil-drawing-coloring-colored-pencils-159825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-position-y: bottom;
+  background-size: cover;
+  height: 370px;
+  top: 0px;
+  left: 0px;
+}
+
 .Projects_container {
   position: absolute;
   width: 100%;
   background: black;
   left: 0px;
+}
+
+.Editcontainer {
+  width: 100%;
 }

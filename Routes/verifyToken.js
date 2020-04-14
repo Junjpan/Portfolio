@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
     const token = bearerHeader.split(' ')[1];
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, data) => {
       // since I didn't install passport, so I can't'compare the req.user with the data.username.
-      // if token was changed from the localstorage, date will be 'undefined'
+      // if token was changed from the localstorage, data will be 'undefined'
       // if token is expired, data will also be undefined.
       if (err || data === undefined) {
         res.status(403).json({ message: 'Sorry, you are forbidden. Login and try again.' });
@@ -15,7 +15,7 @@ const verifyToken = (req, res, next) => {
       }
     });
   } else {
-    res.status(403).json({ message: 'Sorry, you are forbidden. Login and try again.' });
+    res.status(403).json({ message: 'Sorry, you are forbidden. Please login first.' });
   }
 };
 

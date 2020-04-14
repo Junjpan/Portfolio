@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 const userRouter = require('./Routes/userRoute');
 const projectRouter = require('./Routes/projectRoute');
+const techRouter = require('./Routes/TechRoute');
 const conn = require('./connection');
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.listen(PORT, () => {
 
 app.use('/api/user', userRouter);
 app.use('/api/projects', projectRouter);
+app.use('/api/technical', techRouter);
 
 // eslint-disable-next-line no-unused-vars
 conn.once('open', (err, _db) => {

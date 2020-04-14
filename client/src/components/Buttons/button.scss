@@ -1,26 +1,14 @@
 @import '../../_global';
 
 .project_btn {
-  display: flex;
-  justify-content: space-around;
-  color: white;
-  width: 50px;
+  @include menubutton;
+  right: 15px;
+  animation: expand 7s 1 8s;
   height: 170px;
-  top: 0px;
-  background: rgb(3, 30, 61);
-  font-size: 3rem;
-  text-align: center;
-  position: fixed;
-  padding: 15px 5px;
-  right: 0px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  animation: expand 7s 1 10s;
-
+  background: rgb(45, 54, 69);
   &:hover {
-    transform: scale(1.1);
-    padding-top: 20px;
-    border: 1px solid white;
+    border-left: 5px solid #08fdd8;
+    color: #08fdd8;
     cursor: pointer;
     .outer_circle,
     .inner_circle {
@@ -34,12 +22,30 @@
   }
 }
 
+.resource_btn {
+  @include menubutton;
+  background: rgb(3, 30, 61);
+  right: 80px;
+  height: 130px;
+  animation: expand1 7s 1 15s;
+  &:hover {
+    border-left: 5px solid #08fdd8;
+    cursor: pointer;
+    color: #08fdd8;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 110px;
+    font-size: 2.5rem;
+  }
+}
+
 .outer_circle {
   width: 25px;
   height: 2px;
   margin: auto;
   border-radius: 50%;
-  border: 2px solid gray;
+  border: 2px solid #08fdd8;
   animation: rotation 5s infinite;
   position: relative;
 }
@@ -86,5 +92,16 @@
   100% {
     opacity: 1;
     height: 170px;
+  }
+}
+
+@keyframes expand1 {
+  0% {
+    opacity: 0;
+    height: 0px;
+  }
+  100% {
+    opacity: 1;
+    height: 130px;
   }
 }

@@ -5,24 +5,28 @@
   display: flex;
   flex-wrap: wrap;
   margin: 30px auto;
-  padding: 10px;
-  @media screen and (max-width: 320px) {
+
+  @media screen and (max-width: 300px) {
     width: 100%;
     padding: 0px;
   }
 }
 
 .intro_title {
-  background-color: black;
-  color: $assentColor;
+  color: black;
   height: 40px;
   font-size: 2.2rem;
   text-align: center;
+  border-bottom: 1px solid gray;
 }
 
 .intro_body {
   font-size: 1.5rem;
-  white-space: wrap;
-  padding: 1rem;
+  white-space: pre-wrap;
   color: black;
+  @media screen and (max-width: 430px) {
+    padding: 0px;
+    font-size: 1.3rem;
+    word-wrap: break;
+  }
 }

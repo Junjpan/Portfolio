@@ -33,7 +33,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: 'index.html', // the filename value is the name of the minified HTML that will be generated in the dist folder
-      favicon: './src/assets/logo.png', // add the icon to the website tag
+      favicon: './src/assets/JunEBug.png', // add the icon to the website tag
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',

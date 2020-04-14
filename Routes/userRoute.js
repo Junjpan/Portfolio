@@ -34,12 +34,17 @@ Router.post('/login', (req, res) => {
 
 Router.post('/register', async (req, res) => {
   // eslint-disable-next-line prefer-const
-  let { username, password } = req.body;
+  let { username, password, invitationkey } = req.body;
 
   // eslint-disable-next-line prefer-const
   let user = await User.findOne({ username });
-
-  if (user) {
+  if (invitationkey !== process.env.INVITATIONKEY) {
+    res
+      .status(403)
+      .json({
+        message: `You don't have a valid invitation key, please contact the administrator to receive one.`,
+      });
+  } else if (user) {
     res.status(409).json({
       message: 'Sorry, this username has been registered already. Please use different username',
     });

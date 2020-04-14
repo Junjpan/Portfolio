@@ -1,53 +1,54 @@
 @import '../../_global.scss';
 
 .title {
-  padding: 15px 20px;
-  width: 100%;
-  color: $assentColor;
-  position: fixed !important;
-  top: 0px;
-  font-size: 3rem;
-  background: white;
+  @include title;
 }
 .sidebar_container {
-  padding: 20px 0px 200px auto;
-  background: transparent;
-  display: flex;
-  flex-wrap: wrap;
-  width: 290px;
+  @include sideBar;
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.show {
+  @include sideBar;
+}
+
+.closeBTN {
   position: fixed;
-  top: 75px;
-  left: 0px;
-  animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: sidebarSlide 5s forwards;
-  animation: sidebarSlide 5s forwards;
-  overflow: auto;
-  scrollbar-color: #919191;
-  scrollbar-width: thin;
-  &::-webkit-scrollbar-track {
-    -webkit-appearance: none;
-    border: 0.01rem solid transparent;
-    background-clip: content-box;
+  background: $assentColor;
+  top: 80px;
+  left: 10px;
+  padding: 5px;
+  z-index: 5;
+  border-radius: 50%;
+  @media screen and (min-width: 1200px) {
+    display: none;
   }
-  &::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 0.7rem;
-    height: 0;
-  }
-  &::-webkit-scrollbar-thumb {
-    -webkit-appearance: none;
-    border: 0.1rem solid #919191;
-    background: #919191;
+}
+
+.burgerBTN {
+  display: none;
+  @media screen and (max-width: 1200px) {
+    display: block;
+    position: fixed;
+    background: $assentColor;
+    padding: 5px 8px;
+    border-radius: 50%;
+    top: 80px;
+    left: 10px;
   }
 }
 
 .sidebar_image_container {
   margin: 0px auto;
-  border: 10px solid black;
+  border: 10px solid #08fdd8;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+
   &:hover {
-    border: 10px solid white;
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
+    filter: drop-shadow(2px 2px 3px #08fdd8);
+    -webkit-filter: drop-shadow(2px 2px 3px #08fdd8);
     cursor: pointer;
   }
 }
@@ -67,14 +68,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  background-image: linear-gradient(
-    180deg,
-    rgb(97, 107, 134),
-    rgb(4, 88, 77),
-    white,
-    rgb(33, 50, 88),
-    white
-  );
+  background: lightgray;
 }
 
 .projectContainer {
@@ -82,6 +76,11 @@
   width: 80%;
   height: 90vh;
   padding-top: 70px;
+  @media screen and (max-width: 1200px) {
+    height: auto;
+    width: 100%;
+    margin: auto 5px;
+  }
 }
 
 .mini_image {
@@ -94,23 +93,33 @@
   margin: 20px auto 20px auto;
   font-size: 2.7rem;
   color: black;
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+    width: 300px;
+    margin: 5px auto;
+  }
 }
 
 .projectimage {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 40px auto;
 }
+
 .fullscreen {
   width: 706px;
   height: 352px;
-  border-radius: 5px;
   border: 2px solid black;
   box-shadow: 3px 3px 3px black;
-  transition: transform 3s;
+  margin: 25px 25px;
   &:hover {
+    transition: transform 10s;
     transform: scale(1.2);
     cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 }
 
@@ -122,10 +131,24 @@
   border: 5px solid darkgray;
   box-shadow: 3px 3px 3px 4px black;
   border-radius: 5px;
-  transition: transform 3s;
+  transition: transform 10s;
   &:hover {
     transform: scale(1.2);
     cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    width: 178px;
+    height: 452px;
+    margin: 15px auto;
+    &:hover {
+      transform: none;
+      cursor: pointer;
+      filter: brightness(80%);
+      -webkit-filter: brightness(80%);
+    }
+  }
+  @media screen and (min-width: 600px) and (max-width: 890px) {
+    display: none;
   }
 }
 
@@ -134,6 +157,10 @@
   width: 65%;
   margin: 10px auto;
   text-align: left;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    word-wrap: break-word;
+  }
 }
 
 .icon {
@@ -149,5 +176,18 @@
   margin: 15px 20px auto 5px;
   &:hover {
     border: 1px solid black;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 5px auto;
+  }
+}
+
+.fullscreen_container {
+  background: white;
+  border-radius: 5px;
+  width: 756px;
+  height: 402px;
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 }
