@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Loading from '../Buttons/Loading';
 import AddArticle from './AddArticle';
+import Article from './Article';
 
 function Articles({ techId, setArticleView }) {
   const [message, setMessage] = useState('');
@@ -13,6 +14,7 @@ function Articles({ techId, setArticleView }) {
   const [articleArr, setArticleArr] = useState([]);
   const [loading, setLoading] = useState(true);
   const [addArticle, setAddArticle] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setMessage(''), 10000);
@@ -22,7 +24,6 @@ function Articles({ techId, setArticleView }) {
     axios
       .get(`/api/technical/articles/${techId}`)
       .then(res => {
-        console.log(res.data);
         setSubject(res.data.info.subject);
         setArticleArr(res.data.info.articalsArr);
         setLoading(false);
@@ -30,9 +31,8 @@ function Articles({ techId, setArticleView }) {
       .catch(err => {
         setMessage(err.response.data.message);
       });
-  }, []);
+  }, [articleArr]);
 
-  const [showSidebar, setShowSidebar] = useState(false);
   return (
     <div>
       {loading ? (
@@ -75,6 +75,21 @@ function Articles({ techId, setArticleView }) {
             </div>
           </div>
           {addArticle && <AddArticle setAddArticle={setAddArticle} techId={techId} />}
+          <div className="article_body">
+            {articleArr.map(article => {
+              return (
+                <Article
+                  techId={techId}
+                  key={article._id}
+                  id={article._id}
+                  title={article.title}
+                  link={article.link}
+                  source={article.source}
+                  date={article.date}
+                />
+              );
+            })}
+          </div>
           <div className="discclaimer">
             Disclaimer:These links are being provided as a convenience and for informational
             purposed only. I bear no responsibility for the accuracy, legality of content of the

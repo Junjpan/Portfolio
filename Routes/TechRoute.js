@@ -39,9 +39,22 @@ Router.get('/articles/:_id', (req, res) => {
 });
 
 Router.post('/articles/add/:_id', verifyToken, (req, res) => {
-  console.log(req.params._id);
-  console.log(req.body);
-  res.send('success');
+  const { _id } = req.params;
+  const { title, link, source, date } = req.body;
+  Article.create({ title, link, source, date }, (err, newArt) => {
+    if (err) {
+      res.status(404).json({ message: 'Something wrong with the server' });
+    }
+    Technical.findById(_id, (error, tech) => {
+      if (error) {
+        res.status(404).json({ message: 'Something wrong with the server' });
+      }
+      tech.articalsArr.push(newArt._id);
+      tech.save(() => {
+        res.send('success');
+      });
+    });
+  });
 });
 
 Router.post('/changename/:_id', verifyToken, (req, res) => {
@@ -56,6 +69,26 @@ Router.post('/changename/:_id', verifyToken, (req, res) => {
     tech.save(() => {
       res.status(200);
     });
+  });
+});
+
+Router.delete('/article/:_id', (req, res) => {
+  const { _id } = req.params;
+  const { techId } = req.body;
+  console.log(req.body);
+
+  Article.deleteOne({ _id }, (err, _result) => {
+    if (err) {
+      res
+        .status(400)
+        .json({ message: "Article wasn't able to be deleted, please try again later" });
+    }
+    Technical.findById(techId, (_err, tech) => {
+      const index = tech.articalsArr.indexOf(_id);
+      tech.articalsArr.splice(index, 1);
+      tech.save();
+    });
+    res.status(200).json({ message: 'Article has been deleted.' });
   });
 });
 module.exports = Router;

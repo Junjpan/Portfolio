@@ -70,7 +70,11 @@ function Cell({ subject, articalsArr, id, setArticleView, setTechId }) {
       )}
       <Message message={message} />
       {subject}
-      <p>{`${articalsArr.length} Articles`}</p>
+      <p>
+        {articalsArr.length >= 1
+          ? `${articalsArr.length} articles`
+          : `${articalsArr.length} article`}
+      </p>
     </div>
   );
 }

@@ -4,7 +4,7 @@
   @include menubutton;
   right: 15px;
   animation: expand 7s 1 8s;
-  height: 170px;
+  height: 150px;
   background: rgb(45, 54, 69);
   &:hover {
     border-left: 5px solid #08fdd8;
@@ -91,7 +91,7 @@
   }
   100% {
     opacity: 1;
-    height: 170px;
+    height: 150px;
   }
 }
 
