@@ -91,16 +91,16 @@ function Articles({ techId, setArticleView }) {
                 );
               })
             ) : (
-              <p style={{ fontSize: '3rem' }}>
+              <p style={{ fontSize: '1.5rem', textAlign: 'center' }}>
                 There are currently no articles under this subject yet.
               </p>
             )}
           </div>
           <div className="discclaimer">
-            Disclaimer:These links are being provided as a convenience and for informational
-            purposed only. I bear no responsibility for the accuracy, legality of content of the
-            external site of for that of subsequent links.The original author of the article has the
-            full copyright of the article.
+            Disclaimer: These links are being provided as a convenience and for informational
+            purposes only. I bear no responsibility for the accuracy, legality of content of the
+            external site of for that of subsequent links. The original author of the article has
+            the full copyright of the article.
           </div>
         </div>
       )}
