@@ -3,9 +3,9 @@ const conn = require('../connection');
 
 const ArticleSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  date: { type: Date, default: Date.now },
+  date: Date,
   link: { type: String, required: true },
-  text: String,
+  source: String,
 });
 
 module.exports = conn.model('Article', ArticleSchema);

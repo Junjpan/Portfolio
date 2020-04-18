@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -9,21 +10,24 @@ function AddArticle({ setAddArticle, techId }) {
   const [link, setLink] = useState('');
   const [source, setSource] = useState('');
   const [message, setMessage] = useState('');
+  const [date, setDate] = useState();
 
   const addArticle = e => {
     e.preventDefault();
-    const info = { title, link, source };
+    const info = { title, link, source, date };
     if (localStorage.token) {
       axios
         .post(`/api/technical/articles/add/${techId}`, info, {
           headers: { authentication: `Bearer ${localStorage.token}` },
         })
         .then(res => {
-          console.log(res.data);
+          setTitle('');
+          setLink('');
+          setSource('');
         })
         .catch(err => setMessage(err.response.data.message));
     } else {
-      setMessage('Sorry, you action is forbidden.');
+      setMessage("Sorry, you are't authorized to add an article link.");
     }
   };
 
@@ -69,6 +73,18 @@ function AddArticle({ setAddArticle, techId }) {
             id="scource"
             onChange={e => {
               setSource(e.target.value);
+            }}
+          />
+          <br />
+        </label>
+        <label htmlFor="date">
+          Date of the Article:
+          <br />
+          <input
+            type="date"
+            id="date"
+            onChange={e => {
+              setDate(e.target.value);
             }}
           />
           <br />

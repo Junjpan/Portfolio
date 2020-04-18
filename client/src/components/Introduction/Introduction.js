@@ -48,7 +48,7 @@ function Introduction() {
           title: 'My Technical Background',
           icon: faCode,
           text: `
-          Languages: Javascript/ES6,CSS3/CSS,SASS,
+          Languages: Javascript/ES6,CSS3,SASS(SCSS),
                               HTML5/HTML,Pug(JADE)
           Libraries/APIs: React,Node.js,Jquery,Socket.io, 
                                  Styled Component,D3.js,Chart.js                        
