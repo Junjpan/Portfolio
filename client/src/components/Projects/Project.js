@@ -6,7 +6,7 @@ import { faBraille, faLaptop } from '@fortawesome/free-solid-svg-icons';
 
 function Project({ name, tech, description, demoLink, github, fullscreen, smallscreen }) {
   return (
-    <div className="projectContainer" id={name}>
+    <div className="projectContainer" id={`/${name}`}>
       <h2 className="projectName" style={{ textAlign: 'center' }}>
         <FontAwesomeIcon icon={faBraille} className="icon" />
         {name}
