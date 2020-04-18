@@ -24,7 +24,7 @@ function Sidebar({ projects }) {
           return (
             <div key={project._id} className="sidebar_image_container">
               <a
-                href={`#${project.projectName}`}
+                href={`#/${project.projectName}`}
                 onClick={() => {
                   if (showSidebar) {
                     setShowSidebar(false);

@@ -14,13 +14,10 @@ function Article({ techId, id, title, link, source, date }) {
     // we can use config.data to set the response body like axios.delete(url,{data:{foo:'bar'}}),for post,put and patch accept 3 parameters
     // url,data and config so you can use the second parameter to set the response body like axios.put(url,{foo:'bar'})
     axios
-      .delete(
-        `/api/technical/article/${id}`,
-        { data: { techId } },
-        {
-          headers: { authentication: `Bearer ${localStorage.token}` },
-        },
-      )
+      .delete(`/api/technical/article/${id}`, {
+        data: { techId },
+        headers: { authentication: `Bearer ${localStorage.token}` },
+      })
       .then(res => setMessage(res.data.message))
       .catch(err => setMessage(err.response.data.message));
   };

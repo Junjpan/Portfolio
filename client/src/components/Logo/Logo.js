@@ -1,6 +1,5 @@
 import React from 'react';
 import logo1 from '../../assets/JunEBug.png';
-import logo2 from '../../assets/logo.png';
 
 function Logo() {
   return (

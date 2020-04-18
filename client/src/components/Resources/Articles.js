@@ -76,19 +76,25 @@ function Articles({ techId, setArticleView }) {
           </div>
           {addArticle && <AddArticle setAddArticle={setAddArticle} techId={techId} />}
           <div className="article_body">
-            {articleArr.map(article => {
-              return (
-                <Article
-                  techId={techId}
-                  key={article._id}
-                  id={article._id}
-                  title={article.title}
-                  link={article.link}
-                  source={article.source}
-                  date={article.date}
-                />
-              );
-            })}
+            {articleArr.length > 0 ? (
+              articleArr.map(article => {
+                return (
+                  <Article
+                    techId={techId}
+                    key={article._id}
+                    id={article._id}
+                    title={article.title}
+                    link={article.link}
+                    source={article.source}
+                    date={article.date}
+                  />
+                );
+              })
+            ) : (
+              <p style={{ fontSize: '3rem' }}>
+                There are currently no articles under this subject yet.
+              </p>
+            )}
           </div>
           <div className="discclaimer">
             Disclaimer:These links are being provided as a convenience and for informational

@@ -72,7 +72,7 @@ Router.post('/changename/:_id', verifyToken, (req, res) => {
   });
 });
 
-Router.delete('/article/:_id', (req, res) => {
+Router.delete('/article/:_id', verifyToken, (req, res) => {
   const { _id } = req.params;
   const { techId } = req.body;
   console.log(req.body);
