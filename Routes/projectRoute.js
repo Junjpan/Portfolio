@@ -100,7 +100,7 @@ Router.patch(
 
 Router.get('/all', (_req, res) => {
   Project.find({})
-    .sort({ date: -1 })
+    .sort({ date: 1 })
     .then(projects => {
       res.status(200).json({ projects });
     })
