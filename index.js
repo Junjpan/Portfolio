@@ -17,22 +17,21 @@ app.listen(PORT, () => {
   console.log(`listen to port ${PORT}`);
 });
 
+app.use('/api/user', userRouter);
+app.use('/api/projects', projectRouter);
+app.use('/api/technical', techRouter);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
+// eslint-disable-next-line no-unused-vars
 conn.once('open', (err, _db) => {
   console.log('Connected to MongodDB...');
   if (err) {
     throw err;
   }
-
-  app.use('/api/user', userRouter);
-  app.use('/api/projects', projectRouter);
-  app.use('/api/technical', techRouter);
-
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-  }
-
-  // eslint-disable-next-line no-unused-vars
 });
