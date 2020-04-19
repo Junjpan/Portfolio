@@ -81,7 +81,7 @@
     width: 100%;
     margin: auto 5px;
   }
-  @media screen and (max-height: 780px) {
+  @media screen and (max-height: 780px) and (min-width: 400px) {
     margin: 8% auto 4% 20%;
   }
 }
