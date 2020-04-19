@@ -86,11 +86,14 @@ $titleFont: 'Prompt', sans-serif;
   @media screen and (max-width: 480px) {
     width: 100%;
   }
+  @media screen and (min-height: 828px) {
+    height: 68vh;
+  }
 }
 
 @mixin res_sidebar {
   width: 100px;
-  height: 85vh;
+  height: 87vh;
   background: rgba(white, 0.5);
   display: fixed;
   left: 0px;

@@ -46,7 +46,7 @@ function Login({ setRegister, setLogin }) {
             required
           />
           <br />
-          <label htmlFor="password">Pawwrod:</label>
+          <label htmlFor="password">Password:</label>
           <br />
           <input
             name="password"
