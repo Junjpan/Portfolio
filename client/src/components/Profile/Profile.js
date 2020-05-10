@@ -5,7 +5,7 @@ import { useTransition, animated } from 'react-spring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faCodepen, faGithubSquare } from '@fortawesome/free-brands-svg-icons';
-import profileImage from '../../assets/default.jpeg';
+import profileImage from '../../assets/DSC00407.JPG';
 
 function Profile() {
   const [newArray, setNewArray] = useState([

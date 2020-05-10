@@ -190,6 +190,11 @@
   z-index: 5px;
   right: 15px;
   font-size: 1.3rem;
+  @media screen and (max-width: 780px) {
+    background: white;
+    width: 100%;
+    right: 0px;
+  }
 }
 
 .addArticle {
@@ -269,6 +274,7 @@
   @media screen and (max-width: 600px) {
     padding: 20px 0px;
     width: 100%;
+    height: 75vh;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
