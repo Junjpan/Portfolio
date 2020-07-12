@@ -11,7 +11,7 @@ function Introduction() {
       icon: faAddressCard,
       text: `
       My name is Jun, I'm a frontend/full stack developer. 
-      I have nearly 3 years of web development experience. 
+      I have 3+ years of web development experience. 
       I love coding and making dynamic applications and 
       products. In my spare time I love photography and 
       spending my time with my family. I also speak three 
@@ -49,9 +49,9 @@ function Introduction() {
           icon: faCode,
           text: `
           Languages: Javascript/ES6,CSS3,SASS(SCSS),
-                              HTML5/HTML,Pug(JADE)
-          Libraries/APIs: React,Node.js,Jquery,Socket.io, 
-                                 Styled Component,D3.js,Chart.js                        
+                            HTML5/HTML,Pug(JADE),GraphQL
+          Libraries/APIs: React,Redux,Node.js,Jquery, 
+                  Socket.io,Styled Component,D3.js,Chart.js                        
           Frameworks: Express.js,Boostrap
           Tools: Git,NPM,VS Code,Webpack,Terminal
           Storages: MongoDB 
