@@ -1,8 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 import Logo from './components/Logo/Logo';
 import Profile from './components/Profile/Profile';
 import Introduction from './components/Introduction/Introduction';
@@ -17,11 +19,24 @@ if (process.env.NODE_ENV === 'development') {
   axios.defaults.baseURL = 'http://localhost:5000';
 }
 
+const history = createBrowserHistory();
+ReactGA.initialize('UA-196535674-1');
+
+history.listen(location => {
+  ReactGA.set({ page: location.pathname });
+  ReactGA.pageview(location.pathname);
+});
+
 function App() {
   const [login, setLogin] = useState(false);
   const loginstatus = localStorage.token;
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route
           path="/"

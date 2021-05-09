@@ -79,7 +79,9 @@ function Profile() {
                   }}
                   config={{ delay: 7000, duration: 1000 }}
                 >
-                  {prop => <span style={prop}> Frontend Developer/Full Stack Developer</span>}
+                  {prop => (
+                    <span style={prop}> UX Engineer/Frontend Developer/Full Stack Developer</span>
+                  )}
                 </Spring>
               </b>
             )}
