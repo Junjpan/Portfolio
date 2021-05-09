@@ -6,6 +6,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Message from '../Message/Message';
+import { Event } from './../Tracking/event';
 
 function Cell({ subject, articalsArr, id, setArticleView, setTechId }) {
   const [editName, setEditName] = useState(false);
@@ -55,6 +56,7 @@ function Cell({ subject, articalsArr, id, setArticleView, setTechId }) {
           <div
             onClick={() => {
               setArticleView(true);
+              Event('Resources', `view ${subject}`, subject);
               setTechId(id);
             }}
           >
