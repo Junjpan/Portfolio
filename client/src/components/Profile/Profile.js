@@ -46,14 +46,14 @@ function Profile() {
     }, 2000);
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setNewArray([
-        ...newArray,
-        { key: 3, name: 'CodePen', link: 'https://codepen.io/merrypjj', icon: faCodepen },
-      ]);
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setNewArray([
+  //       ...newArray,
+  //       { key: 3, name: 'CodePen', link: 'https://codepen.io/merrypjj', icon: faCodepen },
+  //     ]);
+  //   }, 5000);
+  // }, []);
 
   return (
     <div className="profile">
