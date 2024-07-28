@@ -8,24 +8,29 @@ import { faLinkedin, faCodepen, faGithubSquare } from '@fortawesome/free-brands-
 import profileImage from '../../assets/june.jpg';
 
 function Profile() {
-  const [newArray, setNewArray] = useState([
-    { key: 1, name: 'Github', link: 'https://github.com/Junjpan', icon: faGithubSquare },
-  ]);
-
+  const [newArray, setNewArray] = useState([]);
   function Animation(items) {
     const transitions = useTransition(items, item => item.key, {
-      from: { transform: 'translate3d(0,-200px,0)' },
-      enter: { transform: 'translate3d(0,0px,0)' },
-      config: { duration: 1500 },
+      from: { transform: 'translate3d(0,20px,0)', opacity: 0 },
+      enter: { transform: 'translate3d(0,0px,0)', opacity: 1 },
+      config: { duration: 350 },
+      delay: 1000,
     });
 
     return transitions.map(({ item, key, props }) => {
       return (
-        <animated.p key={key} style={{ color: 'black', fontSize: '1.5rem', ...props }}>
+        <animated.p
+          key={key}
+          style={{
+            color: 'black',
+            fontSize: '1.5rem',
+            ...props,
+          }}
+        >
           <FontAwesomeIcon icon={item.icon} size="1x" style={{ color: 'black' }} /> {item.name}
           {' : '}
-          <a href={item.link} target="_blank" rel="noopener noreferrer">
-            {item.link}
+          <a href={item.link ? item.link : '#'} target="_blank" rel="noopener noreferrer">
+            {item.link ? item.link : item.text}
           </a>
         </animated.p>
       );
@@ -33,27 +38,34 @@ function Profile() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer0 = setTimeout(() => {
+      setNewArray([{ key: 1, name: 'Contact', text: 'merrypjj@yahoo.com', icon: faAddressCard }]);
+    }, 2500);
+    const timer1 = setTimeout(() => {
+      setNewArray([
+        ...newArray,
+        { key: 2, name: 'Github', link: 'https://github.com/Junjpan', icon: faGithubSquare },
+      ]);
+    }, 3500);
+
+    const timer2 = setTimeout(() => {
       setNewArray([
         ...newArray,
         {
-          key: 2,
+          key: 3,
           name: 'Linkedin',
           link: 'https://www.linkedin.com/in/j-pan-b5b07a155/',
           icon: faLinkedin,
         },
       ]);
-    }, 2000);
-  }, []);
+    }, 4500);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setNewArray([
-  //       ...newArray,
-  //       { key: 3, name: 'CodePen', link: 'https://codepen.io/merrypjj', icon: faCodepen },
-  //     ]);
-  //   }, 5000);
-  // }, []);
+    return () => {
+      clearTimeout(timer0);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
+  }, []);
 
   return (
     <div className="profile">
@@ -80,7 +92,10 @@ function Profile() {
                   config={{ delay: 7000, duration: 1000 }}
                 >
                   {prop => (
-                    <span style={prop}> UX Engineer/Frontend Developer/Full Stack Developer</span>
+                    <span style={prop}>
+                      {' '}
+                      Sr. Design technologist/UX Engineer/Frontend Developer
+                    </span>
                   )}
                 </Spring>
               </b>
@@ -95,13 +110,6 @@ function Profile() {
             {props => <b style={props}>living in Orange County, CA .</b>}
           </Spring>
         </h1>
-        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ delay: 3000, duration: 1000 }}>
-          {props => (
-            <p style={{ color: 'black', fontSize: '1.5rem', ...props }}>
-              <FontAwesomeIcon icon={faAddressCard} size="1x" /> Contact : merrypjj@yahoo.com
-            </p>
-          )}
-        </Spring>
         {Animation(newArray)}
       </div>
       <div>

@@ -5,6 +5,10 @@
   margin: 150px auto 10px;
   width: 80%;
   justify-content: space-between;
+
+  @media screen and (max-width: 1400px) {
+    width: 90%;
+  }
 }
 
 .profile_image {

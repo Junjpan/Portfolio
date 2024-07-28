@@ -10,12 +10,12 @@ function Introduction() {
       title: 'ABOUT ME',
       icon: faAddressCard,
       text: `
-      My name is Jun, I'm an UX engineer/frontend 
-      developer. I have 7+ years of web development  
-      experience.I love coding and making dynamic  
-      applications and products. In my spare time I love  
-      photography andspending my time with my family. I 
-      also speak three languages.`,
+      My name is Jun, I'm a Sr. Design technologist/UX 
+      engineer/frontend developer. I have 7+ years of 
+      web development experience.I love coding and
+      making dynamic applications and products. In my 
+      spare time I love photography andspending my time 
+      with my family. I also speak three languages.`,
     },
   ]);
 
