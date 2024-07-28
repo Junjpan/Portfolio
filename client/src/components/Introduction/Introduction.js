@@ -11,7 +11,7 @@ function Introduction() {
       icon: faAddressCard,
       text: `
       My name is Jun, I'm an UX engineer/frontend 
-      developer. I have 4+ years of web development  
+      developer. I have 7+ years of web development  
       experience.I love coding and making dynamic  
       applications and products. In my spare time I love  
       photography andspending my time with my family. I 
