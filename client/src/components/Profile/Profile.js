@@ -40,13 +40,13 @@ function Profile() {
   useEffect(() => {
     const timer0 = setTimeout(() => {
       setNewArray([{ key: 1, name: 'Contact', text: 'merrypjj@yahoo.com', icon: faAddressCard }]);
-    }, 2500);
+    }, 2000);
     const timer1 = setTimeout(() => {
       setNewArray([
         ...newArray,
         { key: 2, name: 'Github', link: 'https://github.com/Junjpan', icon: faGithubSquare },
       ]);
-    }, 3500);
+    }, 2500);
 
     const timer2 = setTimeout(() => {
       setNewArray([
@@ -58,7 +58,7 @@ function Profile() {
           icon: faLinkedin,
         },
       ]);
-    }, 4500);
+    }, 3000);
 
     return () => {
       clearTimeout(timer0);
@@ -71,15 +71,11 @@ function Profile() {
     <div className="profile">
       <div>
         <h1>
-          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ duration: 1000 }}>
+          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ duration: 500 }}>
             {props => <b style={props}> Hi, I'm Jun. </b>}
           </Spring>
           <br />
-          <Spring
-            from={{ opacity: 0 }}
-            to={{ opacity: 1 }}
-            config={{ delay: 1000, duration: 1000 }}
-          >
+          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ delay: 1000, duration: 500 }}>
             {props => (
               <b style={props}>
                 I'm a
@@ -89,7 +85,7 @@ function Profile() {
                     color: 'white',
                     textShadow: '0 0 3px black,0 0 5px black',
                   }}
-                  config={{ delay: 7000, duration: 1000 }}
+                  config={{ delay: 5000, duration: 1000 }}
                 >
                   {prop => (
                     <span style={prop}>
@@ -102,11 +98,7 @@ function Profile() {
             )}
           </Spring>
           <br />
-          <Spring
-            from={{ opacity: 0 }}
-            to={{ opacity: 1 }}
-            config={{ delay: 2000, duration: 1000 }}
-          >
+          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ delay: 2000, duration: 500 }}>
             {props => <b style={props}>living in Orange County, CA .</b>}
           </Spring>
         </h1>

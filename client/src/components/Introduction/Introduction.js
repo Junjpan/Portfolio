@@ -4,25 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressCard, faUsersCog, faCode } from '@fortawesome/free-solid-svg-icons';
 
 function Introduction() {
-  const [introArray, setIntroductionArray] = useState([
-    {
-      key: 1,
-      title: 'ABOUT ME',
-      icon: faAddressCard,
-      text: `
-      My name is Jun, I'm a Sr. Design technologist/UX 
-      engineer/frontend developer. I have 7+ years of 
-      web development experience.I love coding and
-      making dynamic applications and products. In my 
-      spare time I love photography andspending my time 
-      with my family. I also speak three languages.`,
-    },
-  ]);
+  const [introArray, setIntroductionArray] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
       setIntroductionArray([
-        ...introArray,
+        {
+          key: 1,
+          title: 'ABOUT ME',
+          icon: faAddressCard,
+          text: `
+          My name is Jun, I'm a Sr. Design technologist/UX 
+          engineer/frontend developer. I have 7+ years of 
+          web development experience.I love coding and
+          making dynamic applications and products. In my 
+          spare time I love photography andspending my 
+          time with my family. I also speak three languages.`,
+        },
         {
           key: 2,
           title: 'Why Work With Me?',
@@ -35,14 +33,6 @@ function Introduction() {
           consummate learner I’m always eager to learn 
           new technologies and push the edge technically.`,
         },
-      ]);
-    }, 2000);
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIntroductionArray([
-        ...introArray,
         {
           key: 3,
           title: 'My Technical Background',
@@ -62,14 +52,40 @@ function Introduction() {
                       Responsive web design.`,
         },
       ]);
-    }, 4500);
+    }, 3500);
   }, []);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIntroductionArray([
+  //       ...introArray,
+  //       {
+  //         key: 3,
+  //         title: 'My Technical Background',
+  //         icon: faCode,
+  //         text: `
+  //         Languages: Javascript/ES6, Typescript,CSS3,
+  //               SASS(SCSS),HTML5/HTML,Pug(JADE),GraphQL
+  //         Libraries/APIs: React,Redux,Node.js,Jquery,
+  //                 Socket.io,Styled Component,D3.js,Chart.js
+  //         Frameworks: Express.js,Boostrap
+  //         Tools: Git,NPM,VS Code,Webpack,Terminal
+  //         Storages: MongoDB
+  //         Platform: VS Code,Windows,Github,Heroku,
+  //                         Codepen,Cloudinary,Figma
+  //         Others: MERN Stack,Full Stack,Frontend,UI,
+  //                     Figma plugin,Restful APIs,JSON,AJAX,
+  //                     Responsive web design.`,
+  //       },
+  //     ]);
+  //   }, 2000);
+  // }, []);
 
   function Animated(items) {
     const transitions = useTransition(items, item => item.key, {
-      from: { transform: 'translate3d(-1000px,0,0)', height: '0px', opacity: 0 },
+      from: { transform: 'translate3d(0px,20px,0)', height: '0px', opacity: 0 },
       enter: { transform: 'translate3d(0px,0,0)', height: '340px', opacity: 1 },
-      config: { duration: 2000 },
+      config: { duration: 350 },
     });
 
     // border: '1px solid white',
