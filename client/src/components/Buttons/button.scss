@@ -2,7 +2,7 @@
 
 .project_btn {
   @include menubutton;
-  right: 15px;
+  right: 0px;
   animation: expand 7s 1 8s;
   height: 150px;
   background: rgb(45, 54, 69);
@@ -27,7 +27,7 @@
 .resource_btn {
   @include menubutton;
   background: rgb(3, 30, 61);
-  right: 80px;
+  right: 65px;
   height: 130px;
   animation: expand1 7s 1 15s;
   transition: all 0.35s;

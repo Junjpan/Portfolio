@@ -113,12 +113,13 @@
 .fullscreen {
   width: 706px;
   height: 352px;
-  border: 2px solid black;
-  box-shadow: 3px 3px 3px black;
+  // border: 2px solid black;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 20%), -3px -3px 3px rgba(0, 0, 0, 20%);
   margin: 25px 25px;
+  transition: all 1s;
+  border-radius: 4px;
   &:hover {
-    transition: transform 10s;
-    transform: scale(1.2);
+    transform: scale(1.07) translateY(-20px);
     cursor: pointer;
   }
   @media screen and (max-width: 600px) {
@@ -131,12 +132,13 @@
   margin-top: -40px;
   width: 178px;
   height: 452px;
-  border: 5px solid darkgray;
-  box-shadow: 3px 3px 3px 4px black;
+  padding: 8px;
+  border: 2px solid darkgray;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 20%);
   border-radius: 5px;
-  transition: transform 10s;
+  transition: all 1s;
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1) translateX(-20px);
     cursor: pointer;
   }
   @media screen and (max-width: 600px) {
