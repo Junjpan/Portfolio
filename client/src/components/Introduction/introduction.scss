@@ -22,11 +22,20 @@
 
 .intro_body {
   font-size: 1.5rem;
-  white-space: pre-wrap;
+  padding-top: 20px;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   @media screen and (max-width: 430px) {
     padding: 0px;
     font-size: 1.3rem;
     word-wrap: break;
   }
+}
+
+.intro_container:last-of-type .intro_body {
+  white-space: pre-wrap;
+  padding-top: 0;
 }

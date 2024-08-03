@@ -17,8 +17,8 @@ function Introduction() {
           My name is Jun, I'm a Sr. Design technologist/UX 
           engineer/frontend developer. I have 7+ years of 
           web development experience.I love coding and
-          making dynamic applications and products. In my 
-          spare time I love photography andspending my 
+          making dynamic applications,tools and products. In my 
+          spare time I love photography and spending my 
           time with my family. I also speak three languages.`,
         },
         {
@@ -38,48 +38,24 @@ function Introduction() {
           title: 'My Technical Background',
           icon: faCode,
           text: `
-          Languages: Javascript/ES6, Typescript,CSS3,
-                SASS(SCSS),HTML5/HTML,Pug(JADE),GraphQL
-          Libraries/APIs: React,Redux,Node.js,Jquery, 
-                  Socket.io,Styled Component,D3.js,Chart.js                        
-          Frameworks: Express.js,Boostrap
-          Tools: Git,NPM,VS Code,Webpack,Terminal
-          Storages: MongoDB 
-          Platform: VS Code,Windows,Github,Heroku,
-                          Codepen,Cloudinary,Figma 
-          Others: MERN Stack,Full Stack,Frontend,UI,
-                      Figma plugin,Restful APIs,JSON,AJAX,
-                      Responsive web design.`,
+          Languages: Javascript/ES6, Typescript, CSS3/CSS, 
+                            SASS/SCSS, HTML5/HTML, Graphql
+          Frameworks: Express.js, Next.js
+          Libraries/APIs: React, Redux, Node.js, Storybook
+          Tools: Git, NPM, VS Code ,Webpack ,Codepen
+          Storages: MongoDB, DynamoDB, Firebase, Airtable
+          Cloud service: AWS amplify, S3, Google cloud, 
+                                  Heroku
+          Design tool: Figma 
+          Others: Frontend, Figma Plugin, Design system, UI 
+                      development, MERN Stack, Full Stack, 
+                      Accessibility, Animation, Restful APIs, 
+                      tooling, Responsive web design, Google 
+                      analytics.`,
         },
       ]);
     }, 3500);
   }, []);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIntroductionArray([
-  //       ...introArray,
-  //       {
-  //         key: 3,
-  //         title: 'My Technical Background',
-  //         icon: faCode,
-  //         text: `
-  //         Languages: Javascript/ES6, Typescript,CSS3,
-  //               SASS(SCSS),HTML5/HTML,Pug(JADE),GraphQL
-  //         Libraries/APIs: React,Redux,Node.js,Jquery,
-  //                 Socket.io,Styled Component,D3.js,Chart.js
-  //         Frameworks: Express.js,Boostrap
-  //         Tools: Git,NPM,VS Code,Webpack,Terminal
-  //         Storages: MongoDB
-  //         Platform: VS Code,Windows,Github,Heroku,
-  //                         Codepen,Cloudinary,Figma
-  //         Others: MERN Stack,Full Stack,Frontend,UI,
-  //                     Figma plugin,Restful APIs,JSON,AJAX,
-  //                     Responsive web design.`,
-  //       },
-  //     ]);
-  //   }, 2000);
-  // }, []);
 
   function Animated(items) {
     const transitions = useTransition(items, item => item.key, {
@@ -88,8 +64,6 @@ function Introduction() {
       config: { duration: 350 },
     });
 
-    // border: '1px solid white',
-    // boxShadow: '2px 3px 3px black',
     return transitions.map(({ item, key, props }) => {
       return (
         <animated.div
@@ -100,6 +74,7 @@ function Introduction() {
             margin: '0px auto 10px auto',
             ...props,
           }}
+          className="intro_container"
         >
           <div className="intro_title">
             <FontAwesomeIcon

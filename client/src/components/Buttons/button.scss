@@ -6,6 +6,8 @@
   animation: expand 7s 1 8s;
   height: 150px;
   background: rgb(45, 54, 69);
+  transition: all 0.35s;
+  border-radius: 0 0 4px 20px;
   &:hover {
     border-left: 5px solid #08fdd8;
     color: #08fdd8;
@@ -28,6 +30,8 @@
   right: 80px;
   height: 130px;
   animation: expand1 7s 1 15s;
+  transition: all 0.35s;
+  border-radius: 0 0 0px 20px;
   &:hover {
     border-left: 5px solid #08fdd8;
     cursor: pointer;
@@ -89,9 +93,11 @@
     opacity: 0;
     height: 0px;
   }
+  30% {
+    height: 150px;
+  }
   100% {
     opacity: 1;
-    height: 150px;
   }
 }
 
@@ -100,8 +106,10 @@
     opacity: 0;
     height: 0px;
   }
+  30% {
+    height: 130px;
+  }
   100% {
     opacity: 1;
-    height: 130px;
   }
 }
