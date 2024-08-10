@@ -19,7 +19,7 @@ function Project({ name, tech, description, demoLink, github, fullscreen, smalls
       <div className="projectimage">
         <div>
           <div className="fullscreen_container">
-            <img src={fullscreen} alt={name} className="fullscreen" />
+            <img src={fullscreen} alt={name} className="fullscreen screen" />
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             <button
@@ -44,7 +44,9 @@ function Project({ name, tech, description, demoLink, github, fullscreen, smalls
             </button>
           </div>
         </div>
-        {smallscreen !== '' ? <img src={smallscreen} alt={name} className="smallscreen" /> : null}
+        {smallscreen !== '' ? (
+          <img src={smallscreen} alt={name} className="smallscreen screen" />
+        ) : null}
       </div>
       <div className="normalfont">
         <FontAwesomeIcon icon={faBuffer} className="icon" />
